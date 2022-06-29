@@ -1,0 +1,16 @@
+.LoginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8em;
+    margin: 0em;
+    background-color: #F7FFF7;
+    font-size: 2em;
+
+}
+
+.Login {
+    padding: 5em;
+    background-color: #009F93;
+}

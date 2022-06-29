@@ -1,13 +1,34 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+
+import React, { useState } from 'react'
+import LoginForm from '../components/LoginForm';
 
 export default function Home() {
-  return (
-    
-    <div className={styles.container}>
-      <h1>Salve</h1>
-    </div>
-    
-  )
+    //login teste, precisa linkar com o banco de dados
+    const adminUser = {
+        email: "admin@admin.com",
+        password: "admin123"
+    }
+
+    const [user, setUser] = useState({ name: "", email: "" })
+    const [erro, setError] = useState("");
+
+    const Login = details => {
+        console.log(details);
+    }
+
+    const Logout = () => {
+        console.log("Logout");
+    }
+
+    return (
+        <div className="App">
+            {(user.email != "") ? (<div className="welcome">
+                <h2>Welcome, <span>{user.name}</span></h2>
+                <button>Logout</button>
+            </div>
+            ) : (
+                <LoginForm />
+            )}
+        </div>
+    )
 }
