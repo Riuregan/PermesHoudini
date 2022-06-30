@@ -35,6 +35,7 @@ function LoginForm() {
     <form className={styles.Login}>
       <div className={styles.LoginForm}>
         <h2>Faça Login</h2>
+
         {/*ERRO */}
         <div className={styles.FormGroup}>
           <label htmlFor="CPF">CPF:</label>
