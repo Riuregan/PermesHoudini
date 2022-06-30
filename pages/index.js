@@ -1,6 +1,8 @@
 
 import React, { useState } from 'react'
 import LoginForm from '../components/LoginForm';
+import { Provider } from "react-redux";
+import { store } from "../store/store";
 
 export default function Home() {
     //login teste, precisa linkar com o banco de dados
@@ -22,13 +24,15 @@ export default function Home() {
 
     return (
         <div className="App">
-            {(user.email != "") ? (<div className="welcome">
-                <h2>Welcome, <span>{user.name}</span></h2>
-                <button>Logout</button>
-            </div>
-            ) : (
-                <LoginForm />
-            )}
+            <Provider store={store}>
+                {(user.email != "") ? (<div className="welcome">
+                    <h2>Welcome, <span>{user.name}</span></h2>
+                    <button>Logout</button>
+                </div>
+                ) : (
+                    <LoginForm />
+                )}
+            </Provider>
         </div>
     )
 }
