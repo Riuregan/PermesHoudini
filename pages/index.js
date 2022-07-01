@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import LoginForm from '../components/LoginForm';
 import { Provider } from "react-redux";
 import { store } from "../store/store";
+import TestesClient from '../components/TestesClient'
 
 export default function Home() {
     //login teste, precisa linkar com o banco de dados
@@ -32,7 +33,9 @@ export default function Home() {
                 ) : (
                     <LoginForm />
                 )}
+
             </Provider>
         </div>
     )
+
 }

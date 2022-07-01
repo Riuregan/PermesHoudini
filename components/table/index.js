@@ -1,7 +1,5 @@
 import { useTable, useSortBy, Column, usePagination, useGlobalFilter } from 'react-table';
 import React from 'react';
-//import styles from '../../table.css'
-import GlobalFilter from './GlobalFilter';
 
 
 const SortTable = (props) => {
@@ -36,22 +34,10 @@ const SortTable = (props) => {
         preGlobalFilteredRows
     } = tableInstance;
 
-    const { pageIndex, globalFilter } = state;
+    const { pageIndex } = state;
 
     return (
         <div className="global">
-            {/* <GlobalFilter
-                preGlobalFilteredRows={preGlobalFilteredRows}
-                globalFilter={globalFilter}
-                setGlobalFilter={setGlobalFilter}
-            ></GlobalFilter> */}
-
-            {/* <div className="search">
-                <span >
-                    Search: {' '}
-                    <input value={globalFilter || ' '} onChange={e => setGlobalFilter(e.target.value)}></input>
-                </span>
-            </div> */}
 
             <table {...getTableProps()} style={{ border: 'solid 1px blue' }}>
                 <thead>

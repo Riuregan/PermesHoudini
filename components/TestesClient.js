@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import SortTable from '../components/table/index'
+import SortTable from './table/index'
 import axios from "axios"
+import { selectCurrentUser } from '../store/user/user.selector'
+import { useSelector } from "react-redux";
+import { Provider } from "react-redux";
+import { store } from "../store/store";
 
 function TestesClient() {
 
     const [dados, setDados] = useState([]);
+    const userAtual = useSelector(selectCurrentUser);
 
     useEffect(() => {
         axios.get(`http://localhost:3001/testes`)
@@ -16,13 +21,7 @@ function TestesClient() {
     }, []);
 
     const handleClickAdd = () => {
-        // axios.post(`http://localhost:3001/addTestes`, {
-
-        // })
-        //     .then((c) => {
-        //         //dispatch(setCurrentUser(c));
-        //         Router.push('/SignupForm')
-        //     })
+        console.log(userAtual)
     }
 
 
@@ -71,6 +70,7 @@ function TestesClient() {
             <input></input>
             <button onClick={handleClickAdd}>Pedir teste</button>
             <SortTable InitialPageSize={3} columns={columns} data={dados}></SortTable>
+
         </div>
     )
 }

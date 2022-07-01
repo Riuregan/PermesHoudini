@@ -5,19 +5,25 @@ import styles from '../styles/LoginForms.module.css'
 import axios from "axios"
 
 import { setCurrentUser } from "../store/user/user.action";
+import { setIsClientAuthenticated } from "../store/user/user.action";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function LoginForm() {
 
   const dispatch = useDispatch();
+  const isClientAuth = useSelector(setIsClientAuthenticated);
 
   const [user, setUser] = useState();
 
   const handleLoginClient = () => {
     axios.get(`http://localhost:3001/loginClient/${user.CPF}/${user.SENHA}`)
       .then((c) => {
-        //dispatch(setCurrentUser(c));
-        Router.push('/SignupForm')
+        dispatch(setCurrentUser(c));
+        console.log(isClientAuth)
+        dispatch(setIsClientAuthenticated(!isClientAuth.payload.user.isClientAuthenticated));
+        Router.push('/')
+
       }
       )
   }
@@ -45,8 +51,8 @@ function LoginForm() {
           <label htmlFor="password">Senha:</label>
           <input type="password" onChange={handleChange} name="SENHA" id="password" />
         </div>
-        <input type="submit" value="LOGIN CLIENT" name="" onClick={handleLoginClient} />
-        <input type="submit" value="LOGIN FUNC" />
+        <input placeholder="Login client..." onClick={handleLoginClient} />
+        <input placeholder="Search..." />
       </div>
     </form>
   )
