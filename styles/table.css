@@ -1,0 +1,71 @@
+table {
+    font-family: Raleway, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table td,
+table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+table thead th span {
+    cursor: pointer;
+}
+
+table tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.89);
+}
+
+table tr {
+    background-color: #ececec;
+}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #ffffffd7;
+    color: rgb(0, 0, 0);
+}
+
+.pagination {
+    right: 50px;
+    padding: 10px;
+    background-color: #f7f7f74f;
+    border-radius: 0px 0px 18px 18px;
+}
+.pagination {
+    flex-direction: row;
+    position: flex;
+    justify-content: flex-end;
+}
+.search {
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 18px 18px 0px 0px;
+}
+.search input {
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.global {
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+    margin: 0.8rem 1rem;
+}
+
+.previous,
+.next {
+    width: 80px;
+}
+
+.go {
+    width: 30px;
+}

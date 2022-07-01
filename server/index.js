@@ -26,10 +26,40 @@ app.get("/lab", (req, res) => {
             return connection.execute("select * from time");
 
         }).then((result) => {
+            // result.rows.forEach((elemento) => {
+            //     let user = new Object();
+            //     user.id = elemento[0];
+            //     user.nome = elemento[1];
+            //     users.push(user);
+            // });
+            res.status(200).json(result);
+        }).then((app) => {
+            if (connection) {
+                connection.close();
+            }
+        }).catch((error) => {
+            res.status(500).json({ message: error.message || "Some error occurred!" });
+        });
+
+});
+
+// GET TESTES
+
+
+app.get("/testes", (req, res) => {
+    let users = new Array();
+    let connection;
+    console.log(req.body)
+    oracledb.getConnection(dbConfig)
+        .then((c) => {
+            connection = c;
+            return connection.execute("select * from testes");
+
+        }).then((result) => {
             result.rows.forEach((elemento) => {
                 let user = new Object();
-                user.id = elemento[0];
-                user.nome = elemento[1];
+                user.id_teste = elemento[0];
+                user.usuario_cpf = elemento[1];
                 users.push(user);
             });
             res.status(200).json(users);
@@ -42,6 +72,8 @@ app.get("/lab", (req, res) => {
         });
 
 });
+
+////LOGIN CLIENT
 
 app.get("/loginClient/:cpf/:senha", (req, res) => {
     let users = new Array();
