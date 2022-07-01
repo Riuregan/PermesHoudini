@@ -1,0 +1,12 @@
+.SignupForm {
+    width: 35vw;
+    height: 35vh;
+    display: flex;
+    border-radius: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F7FFF7;
+    font-size: 25px;
+
+}
