@@ -1,9 +1,6 @@
 
 import React, { useState } from 'react'
 import LoginForm from '../components/LoginForm';
-import { Provider } from "react-redux";
-import { store } from "../store/store";
-import TestesClient from '../components/TestesClient'
 import styles from '../styles/Index.module.css';
 
 export default function Home() {
@@ -26,16 +23,13 @@ export default function Home() {
 
     return (
         <div className={styles.index}>
-            <Provider store={store}>
-                {(user.email != "") ? (<div className="welcome">
-                    <h2>Welcome, <span>{user.name}</span></h2>
-                    <button>Logout</button>
-                </div>
-                ) : (
-                    <LoginForm />
-                )}
-
-            </Provider>
+            {(user.email != "") ? (<div className="welcome">
+                <h2>Welcome, <span>{user.name}</span></h2>
+                <button>Logout</button>
+            </div>
+            ) : (
+                <LoginForm />
+            )}
         </div>
     )
 

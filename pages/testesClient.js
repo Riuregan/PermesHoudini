@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import SortTable from './table/index'
+import SortTable from '../components/table/index'
 import axios from "axios"
-import { selectCurrentUser } from '../store/user/user.selector'
-import { useSelector } from "react-redux";
-import { Provider } from "react-redux";
-import { store } from "../store/store";
 
 function TestesClient() {
 
     const [dados, setDados] = useState([]);
-    const userAtual = useSelector(selectCurrentUser);
 
     useEffect(() => {
         axios.get(`http://localhost:3001/testes`)
@@ -19,6 +14,7 @@ function TestesClient() {
             }
             )
     }, []);
+
 
     const handleClickAdd = () => {
         console.log(userAtual)
