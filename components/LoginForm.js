@@ -18,25 +18,35 @@ function LoginForm() {
   const [user, setUser] = useState();
 
   const handleLoginClient = () => {
-    axios.get(`http://localhost:3001/loginClient/${user.CPF}/${user.SENHA}`)
-      .then((c) => {
-        if ((c.data.rows[0]) == undefined) {
-          axios.get(`http://localhost:3001/loginFunc/${user.CPF}/${user.SENHA}`)
-            .then((c) => {
-              if ((c.data.rows[0]) == undefined) {
-                alert('Usuário não encontrado');
-              } else {
-                dispatch(addUser(c.data.rows[0]));
-                dispatch(FuncAuthenticated(!isAuthenticatedFunc.isAuthenticatedFunc));
-                Router.push('/testesClient')
-              }
-            })
-        } else {
-          dispatch(addUser(c.data.rows[0]));
-          dispatch(ClientAuthenticated(!isAuthenticatedClient.isAuthenticatedClient));
-          Router.push('/testesClient')
-        }
-      })
+    const axiosrequest1 = axios.get(`http://localhost:3001/loginClient/${user.CPF}/${user.SENHA}`);
+    const axiosrequest2 = axios.get(`http://localhost:3001/loginFunc/${user.CPF}/${user.SENHA}`);
+    const axiosrequest3 = axios.get(`http://localhost:3001/loginGerente/${user.CPF}`);
+    // you could also use destructuring to have an array of responses
+    axios.all([axiosrequest1, axiosrequest2, axiosrequest3]).then(axios.spread(function (res1, res2, res3) {
+      console.log(res1);
+      console.log(res2);
+      console.log(res3);
+    }));
+
+    // axios.get(`http://localhost:3001/loginClient/${user.CPF}/${user.SENHA}`)
+    //   .then((c) => {
+    //     if ((c.data.rows[0]) == undefined) {
+    //       axios.get(`http://localhost:3001/loginFunc/${user.CPF}/${user.SENHA}`)
+    //         .then((c) => {
+    //           if ((c.data.rows[0]) == undefined) {
+    //             alert('Usuário não encontrado');
+    //           } else {
+    //             dispatch(addUser(c.data.rows[0]));
+    //             dispatch(FuncAuthenticated(!isAuthenticatedFunc.isAuthenticatedFunc));
+    //             Router.push('/testesClient')
+    //           }
+    //         })
+    //     } else {
+    //       dispatch(addUser(c.data.rows[0]));
+    //       dispatch(ClientAuthenticated(!isAuthenticatedClient.isAuthenticatedClient));
+    //       Router.push('/testesClient')
+    //     }
+    //   })
   }
 
   const handleChange = (value) => {
