@@ -1,0 +1,16 @@
+.estoque {
+    background-color: #009F93;
+    width: 100vw;
+    height: 100vh;
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    color: #f7fff7;
+}
+
+.barraPesquisa {
+    display: flex;
+    justify-content: flex-end;
+}

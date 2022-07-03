@@ -28,6 +28,7 @@ export default function Home() {
                 <button>Logout</button>
             </div>
             ) : (
+
                 <LoginForm />
             )}
         </div>

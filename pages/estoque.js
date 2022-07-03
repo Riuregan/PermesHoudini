@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import SortTable from '../components/table/index'
 import axios from "axios"
+import styles from '../styles/estoque.module.css'
 
-function TestesClient() {
+function estoque() {
 
     const [dados, setDados] = useState([]);
 
@@ -24,12 +25,12 @@ function TestesClient() {
     const columns = React.useMemo(
         () => [
             {
-                Header: 'ID_TESTE',
-                accessor: 'id_teste',
+                Header: 'Produto',
+                accessor: 'produto',
             },
             {
-                Header: 'USUARIO_CPF',
-                accessor: 'usuario_cpf',
+                Header: 'Quantidade',
+                accessor: 'quantidade',
             },
             {
                 Header: 'Opções',
@@ -60,15 +61,17 @@ function TestesClient() {
 
 
     return (
-        <div className="App">
-            <h1>Testes Clientes</h1>
-            <input placeholder="tipo teste"></input>
-            <input></input>
-            <button onClick={handleClickAdd}>Pedir teste</button>
+        <div className={styles.estoque}>
+            <h1 className={styles.titulo}>Estoque</h1>
+            <div className={styles.barraPesquisa}>
+                <input placeholder="tipo teste"></input>
+                <button onClick={handleClickAdd}>Pedir teste</button>
+            </div>
+
             <SortTable InitialPageSize={3} columns={columns} data={dados}></SortTable>
 
         </div>
     )
 }
 
-export default TestesClient;
+export default estoque;
