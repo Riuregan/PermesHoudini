@@ -7,7 +7,8 @@ const app = express();
 oracledb.autoCommit = true
 
 oracledb.initOracleClient({
-    libDir: "C:\\Users\\vitor\\Desktop\\instantclient_21_6",
+    //libDir: "C:\\Users\\vitor\\Desktop\\instantclient_21_6",
+    libDir: "C:\\Users\\rickz\\Desktop\\Henrique\\CEFET\\6 semestre\\BD\\instantclient_21_6",
 });
 
 app.use(express.json());

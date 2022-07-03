@@ -39,39 +39,40 @@ function LoginForm() {
     //     Router.push('/testesClient')
     //   }
     // }));
-
-    const handleChange = (value) => {
-      console.log(user)
-      setUser((prevValues) => ({
-        ...prevValues,
-        [value.target.name]: value.target.value,
-      }));
-
-    };
-
-    return (
-      <form>
-        <div className={styles.LoginForm}>
-          <h2>Faça Login</h2>
-
-          {/*ERRO */}
-          <div className={styles.formGroup}>
-            <label htmlFor="CPF">CPF:</label>
-            <input className={styles.bar} type="text" onChange={handleChange} name="CPF" id="cpf" maxLength="11" />
-          </div>
-          <div className={styles.formGroup} >
-            <label htmlFor="password">Senha:</label>
-            <input className={styles.bar} type="password" onChange={handleChange} name="SENHA" id="password" />
-          </div>
-          <div className={styles.loginDirecao} >
-            <div>
-              <p>Não tem conta? <a href='/cadastro'>Cadastre-se</a></p>
-            </div>
-            <button type="button" className={styles.loginButton} placeholder="Login client..." onClick={handleLoginClient}>Logar</button>
-          </div>
-        </div>
-      </form>
-    )
   }
 
-  export default LoginForm
+  const handleChange = (value) => {
+    console.log(user)
+    setUser((prevValues) => ({
+      ...prevValues,
+      [value.target.name]: value.target.value,
+    }));
+
+  };
+
+  return (
+    <form>
+      <div className={styles.LoginForm}>
+        <h2>Faça Login</h2>
+
+        {/*ERRO */}
+        <div className={styles.formGroup}>
+          <label htmlFor="CPF">CPF:</label>
+          <input className={styles.bar} type="text" onChange={handleChange} name="CPF" id="cpf" maxLength="11" />
+        </div>
+        <div className={styles.formGroup} >
+          <label htmlFor="password">Senha:</label>
+          <input className={styles.bar} type="password" onChange={handleChange} name="SENHA" id="password" />
+        </div>
+        <div className={styles.loginDirecao} >
+          <div>
+            <p>Não tem conta? <a href='/cadastro'>Cadastre-se</a></p>
+          </div>
+          <button type="button" className={styles.loginButton} placeholder="Login client..." onClick={handleLoginClient}>Logar</button>
+        </div>
+      </div>
+    </form>
+  )
+}
+
+export default LoginForm
