@@ -1,0 +1,16 @@
+.toolbar {
+    display: flex;
+    background-color: #F7FFF7;
+    color: #002400;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.divTypography {
+    display: flex;
+    margin-left: 0px;
+}
+
+.typography {
+    margin-right: 3em;
+}

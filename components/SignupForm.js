@@ -3,14 +3,14 @@ import styles from '../styles/SignupForm.module.css'
 function LoginForm() {
     return (
         <form>
-            <div className={styles.SignupForm}>
+            <div className={styles.signupForm}>
                 <h2>Faça o cadastro</h2>
                 {/*ERRO */}
-                <div className={styles.FormGroup}>
+                <div className={styles.signupGroup}>
                     <label htmlFor="email">Email:</label>
                     <input type="email" name="email" id="email" />
                 </div>
-                <div className={styles.FormGroup}>
+                <div className={styles.signupGroup}>
                     <label htmlFor="name">Nome completo:</label>
                     <input type="name" name="nome" id="nome" />
                 </div>

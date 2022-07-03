@@ -1,4 +1,4 @@
-.SignupForm {
+.signupForm {
     width: 35vw;
     height: 35vh;
     display: flex;
@@ -9,4 +9,10 @@
     background-color: #F7FFF7;
     font-size: 25px;
 
+}
+
+.signupGroup {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
