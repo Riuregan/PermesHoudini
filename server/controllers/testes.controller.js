@@ -1,7 +1,6 @@
 import oracledb from "oracledb";
 import { dbConfig } from '../dbConfig.js'
 
-
 //get Testes
 export function getTestes(req, res) {
     let users = new Array();
