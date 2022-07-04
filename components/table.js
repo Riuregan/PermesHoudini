@@ -2,6 +2,7 @@ import { useTable, useSortBy, Column, usePagination, useGlobalFilter } from 'rea
 import React from 'react';
 
 
+
 const SortTable = (props) => {
     const { columns, data, InitialPageSize } = props;
 
@@ -113,6 +114,7 @@ table {
     font-family: Raleway, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    margin: 0px;
 }
 
 table td,
@@ -156,11 +158,14 @@ table th {
     justify-content: flex-end;
 }
 .search {
+    
     padding: 10px;
     font-weight: bold;
-    border-radius: 18px 18px 0px 0px;
+        border-radius: 18px 18px 0px 0px;
+
 }
 .search input {
+    
     border: 1px solid rgb(0, 0, 0);
 }
 
@@ -169,7 +174,7 @@ table th {
     margin-right: 50px;
     border-radius: 20px;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
-    margin: 0.8rem 1rem;
+    margin: 0.8rem 4rem;
 }
 
 .previous,

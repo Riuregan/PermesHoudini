@@ -7,12 +7,11 @@ import styles from '../styles/Cadastro.module.css';
 import SignupForm from '../components/SignupForm'
 import Header from '../components/Header'
 
-export default function castro() {
+export default function cadastro() {
 
 
     return (
         <div>
-            <Header />
             <div className={styles.cadastro}>
 
                 <SignupForm />

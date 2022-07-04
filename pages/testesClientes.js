@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import SortTable from '../components/table/index'
+import SortTable from '../components/table.js'
 import axios from "axios"
 import styles from '../styles/testesClientes.module.css'
 

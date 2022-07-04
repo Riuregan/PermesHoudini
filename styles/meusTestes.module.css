@@ -1,0 +1,30 @@
+.meusTestes {
+    background-color: #009F93;
+    height: 100vh;
+    width: 100vw;
+
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    color: #f7fff7;
+}
+
+.barraPesquisa {
+    display: flex;
+    justify-content: flex-begin;
+}
+
+.cimaDaTabela {
+    display: flex;
+    justify-content: space-around;
+}
+
+.addButton {
+    background-color: #791E94;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+    border-color: #791E94;
+}

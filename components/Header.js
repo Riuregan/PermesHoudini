@@ -21,7 +21,6 @@ export default function Header() {
                     edge="start"
                     color="inherit"
                     aria-label="menu"
-                    sx={{ mr: 2 }}
                 >
                     {/*This is a simple Menu 
              Icon wrapped in Icon */}
