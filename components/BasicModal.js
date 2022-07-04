@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import styles from '../styles/basicModal.module.css';
 
 const style = {
     position: 'absolute',
@@ -24,7 +25,7 @@ export default function BasicModal() {
 
     return (
         <div>
-            <Button onClick={handleOpen}>Open modal</Button>
+            <Button className={styles.button} onClick={handleOpen}>Solicitar novo teste</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -33,11 +34,21 @@ export default function BasicModal() {
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Text in a modal
+                        Novo teste
                     </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                    </Typography>
+                    <label for="tipo-teste">Teste:</label>
+
+                    <select name="testes" id="teste-select">
+                        <option value="">--Selecione uma opção an option--</option>
+                        <option value="Exame de sangue">Dog</option>
+                    </select>
+                    <div>
+                        <label for="data">Data:</label>
+                        <input></input>
+
+                    </div>
+                    <button>Pedir</button>
+
                 </Box>
             </Modal>
         </div>
