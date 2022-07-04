@@ -10,8 +10,9 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
+    width: '30vw',
+    height: '30vh',
+    bgcolor: '#F7FFF7',
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
@@ -32,22 +33,23 @@ export default function BasicModal() {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
+                <Box sx={style} className={styles.box}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Novo teste
+                        <h1 className={styles.titulo}>Novo teste</h1>
                     </Typography>
-                    <label for="tipo-teste">Teste:</label>
-
-                    <select name="testes" id="teste-select">
-                        <option value="">--Selecione uma opção an option--</option>
-                        <option value="Exame de sangue">Dog</option>
-                    </select>
-                    <div>
-                        <label for="data">Data:</label>
+                    <div className={styles.input}>
+                        <label for="tipo-teste"><h2>Teste:</h2></label>
+                        <select name="testes" id="teste-select">
+                            <option value="">--Selecione uma opção an option--</option>
+                            <option value="Exame de sangue">Dog</option>{/* Aqui vamos colocar as options quando integrar o back*/}
+                        </select>
+                    </div>
+                    <div className={styles.input}>
+                        <label for="data"><h2>Data:</h2></label>
                         <input></input>
 
                     </div>
-                    <button>Pedir</button>
+                    <button className={styles.button}>Pedir</button>
 
                 </Box>
             </Modal>
