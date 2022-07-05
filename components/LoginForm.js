@@ -1,6 +1,6 @@
 import React from 'react'
 import Router from 'next/router'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from '../styles/LoginForms.module.css'
 import axios from "axios"
 
@@ -10,6 +10,12 @@ import { useSelector } from "react-redux";
 import { ClientAuthenticated } from '../store/isAutheticatedClientSlice'
 import { FuncAuthenticated } from '../store/isAuthenticatedFuncSlice'
 function LoginForm() {
+
+
+  useEffect(()=>{
+    localStorage.setItem("name","um nome ai");
+    localStorage.setItem("senha","12345");
+  },[]);
 
   const dispatch = useDispatch();
   const isAuthenticatedClient = useSelector((state) => state.isAuthenticatedClient);
