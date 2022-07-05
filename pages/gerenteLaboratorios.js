@@ -25,6 +25,9 @@ function Estoque() {
             )
     }, [dados]);
 
+    const handleDeleteUserClick = () => {
+        setOpen(true);
+    }
 
     const handleClickAdd = (laboratorio) => {
         console.log('add')
@@ -115,12 +118,18 @@ function Estoque() {
                                 >
                                     Editar
                                 </button>{' '}
-                                <button
-                                    className="TableButton"
-                                    onClick={() => handleDeleteUserClick(value.cell.row.original)}
-                                >
-                                    Excluir
-                                </button>
+                                <div>
+                                    <button
+                                        className="TableButton"
+                                        onClick={() => handleDeleteUserClick(value.cell.row.original)}
+                                    >
+                                        Excluir
+                                    </button>
+                                    <ModalDelete open={open} setOpen={setOpen} confirmModal={(teste) => {
+                                        handleClickAdd(teste)
+                                    }} />
+                                </div>
+
                                 <style jsx>{`
                                 .TableButton{
                                     background-color:#791E94;

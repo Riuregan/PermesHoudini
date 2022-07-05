@@ -19,9 +19,7 @@ const style = {
     p: 4,
 };
 
-export default function ModalAddFuncionario({ confirmModal }) {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
+export default function ModalAddFuncionario({ confirmModal, open, setOpen }) {
     const handleClose = () => setOpen(false);
 
     const [dados, setDados] = useState();
@@ -39,7 +37,7 @@ export default function ModalAddFuncionario({ confirmModal }) {
 
     return (
         <div>
-            <Button className={styles.button} onClick={handleOpen}>Adicionar novo funcionário</Button>
+
             <Modal
                 open={open}
                 onClose={handleClose}

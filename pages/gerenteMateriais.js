@@ -3,7 +3,7 @@ import SortTable from '../components/table.js'
 import axios from "axios"
 import styles from '../styles/estoque.module.css'
 import ModalMateriais from '../components/modal/ModalMateriais'
-import Button from '@mui/material/Button';
+import Header from '../components/header/HeaderGerente'
 
 function GerenteMateriais() {
 
@@ -96,12 +96,18 @@ function GerenteMateriais() {
                                 >
                                     Editar
                                 </button>{' '}
+                                <div>
+
+                                </div>
                                 <button
                                     className="TableButton"
                                     onClick={() => handleDeleteUserClick(value.cell.row.original)}
                                 >
                                     Excluir
                                 </button>
+                                <ModalDelete open={open} setOpen={setOpen} confirmModal={(teste) => {
+                                    handleClickAdd(teste)
+                                }} />
                                 <style jsx>{`
                                 .TableButton{
                                     background-color:#791E94;
@@ -129,6 +135,7 @@ function GerenteMateriais() {
 
     return (
         <div>
+            <Header />
             <div className={styles.estoque}>
                 <h1 className={styles.titulo}>Estoque</h1>
                 <div className={styles.cimaDaTabela}>

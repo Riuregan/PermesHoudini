@@ -84,7 +84,7 @@ const SortTable = (props) => {
                         {pageIndex + 1} de {pageOptions.length}
                     </strong>{' '}
                 </span>
-                <span>
+                {/* <span>
                     | Vá para a página:{' '}
                     <input
                         type="number"
@@ -95,7 +95,7 @@ const SortTable = (props) => {
                         }}
                         style={{ width: '50px' }}
                     ></input>
-                </span>
+                </span> */}
                 <button className="go" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
                     {'<<'}
                 </button>
@@ -127,7 +127,10 @@ table thead th span {
 }
 
 table tr:nth-child(even) {
-    background-color: #f7f7f7;
+    background-color: #f7fff7;
+}
+table tr:nth-child(odd) {
+    background-color: #ffffff;
 }
 
 table tbody tr:hover {
@@ -147,15 +150,12 @@ table th {
 }
 
 .pagination {
-    right: 50px;
     padding: 10px;
     background-color: #f7f7f74f;
-    border-radius: 0px 0px 18px 18px;
-}
-.pagination {
     flex-direction: row;
     position: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
 }
 .search {
     
@@ -179,11 +179,26 @@ table th {
 
 .previous,
 .next {
-    width: 80px;
+    background-color: #791E94;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+    padding-right: 40px;
+    padding-left: 40px;
+    margin: 10px;
+    border-color: #791E94;
 }
 
 .go {
-    width: 30px;
+
+    background-color: #791E94;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin: 10px;
+    border-color: #791E94;
 }
 
             `}</style>

@@ -8,6 +8,18 @@
     border-color: #791E94;
 }
 
+.button:hover {
+    background-color: #791E94;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+    padding-right: 40px;
+    padding-left: 40px;
+    border-color: #791E94;
+
+}
+
+
 
 .box {
     display: flex;

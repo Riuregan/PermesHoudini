@@ -1,9 +1,12 @@
 .toolbar {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
     display: flex;
     background-color: #F7FFF7;
     color: #002400;
     justify-content: space-between;
-    flex-direction: row;
 }
 
 .divTypography {

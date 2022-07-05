@@ -7,7 +7,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import MenuIcon from '@mui/icons-material/MedicalServices';
 import styles from "../../styles/header.module.css"
 
 export default function Header() {
@@ -26,6 +26,7 @@ export default function Header() {
                     {/*This is a simple Menu 
              Icon wrapped in Icon */}
                     <MenuIcon />
+                    <h6>Permes Houdini</h6>
                 </IconButton>
                 {/* The Typography component applies 
            default font weights and sizes */}
@@ -48,7 +49,7 @@ export default function Header() {
                     }
                 </div>
 
-                <Button color="inherit" >Logout</Button>
+                <Button color="inherit" href="/" >Logout</Button>
             </Toolbar>
         </AppBar >
     );

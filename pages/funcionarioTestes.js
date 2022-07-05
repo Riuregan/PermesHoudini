@@ -36,11 +36,11 @@ function FuncionarioTestes() {
                 accessor: '2',
             },
             {
-                Header: 'usuario_cpf',
+                Header: 'Usuario_CPF',
                 accessor: '1',
             },
             {
-                Header: 'funcionario_cpf',
+                Header: 'Funcionario_CPF',
                 accessor: '6',
             },
             {
@@ -65,12 +65,18 @@ function FuncionarioTestes() {
                                 >
                                     Editar
                                 </button>{' '}
-                                <button
-                                    className="TableButton"
-                                    onClick={() => handleDeleteUserClick(value.cell.row.original)}
-                                >
-                                    Excluir
-                                </button>
+                                <div>
+                                    <button
+                                        className="TableButton"
+                                        onClick={() => handleDeleteUserClick(value.cell.row.original)}
+                                    >
+                                        Excluir
+                                    </button>
+                                    <ModalDelete open={open} setOpen={setOpen} confirmModal={(teste) => {
+                                        handleClickAdd(teste)
+                                    }} />
+                                </div>
+
                                 <style jsx>{`
                                 .TableButton{
                                     background-color:#791E94;

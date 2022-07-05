@@ -4,10 +4,21 @@ import axios from "axios"
 import Header from '../components/Header/HeaderGerente'
 import ModalAddFuncionario from '../components/modal/ModalAddFuncionario.js'
 import styles from '../styles/meusTestes.module.css';
+import Button from '@mui/material/Button';
+import ModalDelete from '../components/modal/ModalDelete'
+
 
 function Funcionarios() {
 
     const [dados, setDados] = useState([]);
+    const [open, setOpen] = useState(false);
+
+
+    const handleDeleteUserClick = () => {
+        setOpen(true);
+    }
+
+    const handleOpen = () => setOpen(true)
 
     useEffect(() => {
         axios.get(`http://localhost:3001/funcionarios`)
@@ -17,6 +28,12 @@ function Funcionarios() {
             }
             )
     }, []);
+
+
+
+
+
+    ;
 
 
     const handleClickAdd = () => {
@@ -61,12 +78,19 @@ function Funcionarios() {
                                 >
                                     Editar
                                 </button>{' '}
-                                <button
-                                    className="TableButton"
-                                    onClick={() => handleDeleteUserClick(value.cell.row.original)}
-                                >
-                                    Excluir
-                                </button>
+                                <div>
+                                    <button
+                                        className="TableButton"
+                                        onClick={() => handleDeleteUserClick(value.cell.row.original)}
+                                    >
+                                        Excluir
+                                    </button>
+                                    <ModalDelete open={open} setOpen={setOpen} confirmModal={(teste) => {
+                                        handleClickAdd(teste)
+                                    }} />
+
+                                </div>
+
                                 <style jsx>{`
                                 .TableButton{
                                     background-color:#791E94;
@@ -99,9 +123,11 @@ function Funcionarios() {
             <div >
                 <h1 className={styles.titulo}>Funcionários</h1>
                 <div className={styles.cimaDaTabela}>
-                    <ModalAddFuncionario confirmModal={(teste) => {
+                    <Button className={styles.button} onClick={handleOpen}>Adicionar novo funcionário</Button>
+                    <ModalAddFuncionario open={open} setOpen={setOpen} confirmModal={(teste) => {
                         handleClickAdd(teste)
                     }} />
+
                 </div>
 
                 <SortTable InitialPageSize={3} columns={columns} data={dados}></SortTable>
