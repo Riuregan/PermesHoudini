@@ -63,10 +63,6 @@ function estoque() {
     return (
         <div className={styles.estoque}>
             <h1 className={styles.titulo}>Estoque</h1>
-            <div className={styles.barraPesquisa}>
-                <input placeholder="tipo teste"></input>
-                <button onClick={handleClickAdd}>Pedir teste</button>
-            </div>
 
             <SortTable InitialPageSize={3} columns={columns} data={dados}></SortTable>
 

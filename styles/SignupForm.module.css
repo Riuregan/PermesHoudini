@@ -9,10 +9,13 @@
     background-color: #F7FFF7;
     font-size: 25px;
 
+
 }
 
-.signupGroup {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.signupForm .input {
+    width: 20vw;
+    height: 3vh;
+    margin-left: 2vw;
+    border-radius: 20px;
+
 }

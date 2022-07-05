@@ -11,10 +11,6 @@
     color: #f7fff7;
 }
 
-.barraPesquisa {
-    display: flex;
-    justify-content: flex-begin;
-}
 
 .cimaDaTabela {
     display: flex;

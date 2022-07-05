@@ -9,8 +9,3 @@
     justify-content: center;
     color: #f7fff7;
 }
-
-.barraPesquisa {
-    display: flex;
-    justify-content: flex-end;
-}

@@ -1,0 +1,43 @@
+.perfil {
+    background-color: #F7FFF7;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box {
+    width: '30vw';
+    height: '30vh';
+}
+
+.button {
+    background-color: #002400;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+    padding-right: 40px;
+    padding-left: 40px;
+    border-color: #002400;
+}
+
+.input input {
+    margin: 2vh 0;
+    width: 20vw;
+    height: 3vh;
+    margin-left: 2vw;
+    border-radius: 20px;
+}
+
+.perfil .buttonX {
+    align-self: flex-end;
+    background-color: #DE6449;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+    padding-right: 40px;
+    padding-left: 40px;
+    border-color: #DE6449;
+}

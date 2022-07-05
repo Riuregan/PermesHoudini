@@ -103,10 +103,6 @@ export default function meusExames() {
             <div >
                 <h1 className={styles.titulo}>Testes Clientes</h1>
                 <div className={styles.cimaDaTabela}>
-                    <div className={styles.barraPesquisa}>
-                        <input placeholder="tipo teste"></input>
-                        <button onClick={handleClickAdd}>Pedir teste</button>
-                    </div>
                     <BasicModal />
                 </div>
 
