@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -18,10 +19,22 @@ const style = {
     p: 4,
 };
 
-export default function BasicModal() {
+export default function BasicModal({ confirmModal }) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const [dados, setDados] = useState();
+
+
+    const handleChange = (value) => {
+        console.log(dados)
+        setDados((prevValues) => ({
+            ...prevValues,
+            [value.target.name]: value.target.value,
+        }));
+
+    };
 
 
     return (
@@ -39,17 +52,17 @@ export default function BasicModal() {
                     </Typography>
                     <div className={styles.input}>
                         <label for="tipo-teste"><h2>Teste:</h2></label>
-                        <select name="testes" id="teste-select">
-                            <option value="">--Selecione uma opção an option--</option>
-                            <option value="Exame de sangue">Dog</option>{/* Aqui vamos colocar as options quando integrar o back*/}
+                        <select name="id_tipo_teste" id="teste-select" onChange={handleChange}>
+                            <option value="2">--Selecione uma opção an option--</option>
+                            <option value='1'>Dog</option>{/* Aqui vamos colocar as options quando integrar o back*/}
                         </select>
                     </div>
                     <div className={styles.input}>
                         <label for="data"><h2>Data:</h2></label>
-                        <input></input>
+                        <input max="31/12/9999" onChange={handleChange} name="time_teste"></input>
 
                     </div>
-                    <button className={styles.button}>Pedir</button>
+                    <button onClick={() => { confirmModal(dados); setOpen(false); }} className={styles.button}>Pedir</button>
 
                 </Box>
             </Modal>

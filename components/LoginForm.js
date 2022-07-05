@@ -22,23 +22,23 @@ function LoginForm() {
     const axiosrequest2 = axios.get(`http://localhost:3001/loginFunc/${user.CPF}/${user.SENHA}`);
     const axiosrequest3 = axios.get(`http://localhost:3001/loginGerente/${user.CPF}`);
 
-    // axios.all([axiosrequest1, axiosrequest2, axiosrequest3]).then(axios.spread(function (res1, res2, res3) {
-    //   if (res1.data.rows[0] == undefined) {
-    //     if (res2.data.rows[0] == undefined) {
-    //       alert('usuário não encontrado')
-    //     } else if (res3.data.rows[0] == undefined) {
-    //       dispatch(addUser(res2.data.rows[0]));
-    //       Router.push('/testesClient') // funcionario
-    //     } else {
-    //       dispatch(addUser(res2.data.rows[0]));
-    //       Router.push('/testesClient') //gerente
-    //     }
-    //   } else {
-    //     dispatch(addUser(res1.data.rows[0]));
-    //     dispatch(ClientAuthenticated(!isAuthenticatedClient.isAuthenticatedClient));
-    //     Router.push('/testesClient')
-    //   }
-    // }));
+    axios.all([axiosrequest1, axiosrequest2, axiosrequest3]).then(axios.spread(function (res1, res2, res3) {
+      if (res1.data.rows[0] == undefined) {
+        if (res2.data.rows[0] == undefined) {
+          alert('usuário não encontrado')
+        } else if (res3.data.rows[0] == undefined) {
+          dispatch(addUser(res2.data.rows[0]));
+          Router.push('/funcionariosTestes') // funcionario
+        } else {
+          dispatch(addUser(res2.data.rows[0]));
+          Router.push('/gerenteMateriais') //gerente
+        }
+      } else {
+        dispatch(addUser(res1.data.rows[0]));
+        dispatch(ClientAuthenticated(!isAuthenticatedClient.isAuthenticatedClient));
+        Router.push('/clienteTestes')
+      }
+    }));
   }
 
   const handleChange = (value) => {

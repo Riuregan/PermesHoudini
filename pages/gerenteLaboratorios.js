@@ -1,24 +1,19 @@
-
 import React, { useState, useEffect } from 'react'
-import LoginForm from '../components/LoginForm';
-import { Provider } from "react-redux";
-import { store } from "../store/store";
-import styles from '../styles/meusTestes.module.css';
-import SignupForm from '../components/SignupForm'
-import Header from '../components/Header'
-import axios from "axios"
 import SortTable from '../components/table.js'
+import axios from "axios"
+import Header from '../components/Header'
 import BasicModal from '../components/BasicModal.js'
+import styles from '../styles/meusTestes.module.css';
 
+function Estoque() {
 
-export default function meusExames() {
     const [dados, setDados] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/testes`)
+        axios.get(`http://localhost:3001/laboratorio`)
             .then((c) => {
-                console.log(c)
-                setDados(c.data);
+                console.log(c.data.rows)
+                setDados(c.data.rows);
             }
             )
     }, []);
@@ -33,23 +28,23 @@ export default function meusExames() {
         () => [
             {
                 Header: 'Nome',
-                accessor: 'nome',
+                accessor: '2',
             },
             {
-                Header: 'Data da coleta',
-                accessor: 'dataColeta',
+                Header: 'CEP',
+                accessor: '0',
             },
             {
-                Header: 'Data da entrega',
-                accessor: 'dataEntrega',
+                Header: 'Numero',
+                accessor: '1',
             },
             {
-                Header: 'Nome do funcionário',
-                accessor: 'nomeFuncionário',
+                Header: 'gerente_CPF',
+                accessor: '3',
             },
             {
-                Header: 'Laborátorio',
-                accessor: 'laboratorio',
+                Header: 'Endereço',
+                accessor: '4',
             },
 
             {
@@ -96,14 +91,16 @@ export default function meusExames() {
         []
     );
 
+
     return (
         <div className={styles.meusTestes}>
 
-            <Header />
             <div >
-                <h1 className={styles.titulo}>Testes Clientes</h1>
+                <h1 className={styles.titulo}>Laboratório</h1>
                 <div className={styles.cimaDaTabela}>
-                    <BasicModal />
+                    <BasicModal confirmModal={(teste) => {
+                        handleClickAdd(teste)
+                    }} />
                 </div>
 
                 <SortTable InitialPageSize={3} columns={columns} data={dados}></SortTable>
@@ -114,5 +111,6 @@ export default function meusExames() {
 
         </div>
     )
-
 }
+
+export default Estoque;

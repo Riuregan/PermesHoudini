@@ -3,7 +3,7 @@ import SortTable from '../components/table.js'
 import axios from "axios"
 import styles from '../styles/estoque.module.css'
 
-function estoque() {
+function gerenteMateriais() {
 
     const [dados, setDados] = useState([]);
 
@@ -70,4 +70,4 @@ function estoque() {
     )
 }
 
-export default estoque;
+export default gerenteMateriais;
