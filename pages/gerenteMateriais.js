@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import SortTable from '../components/table.js'
 import axios from "axios"
-import styles from '../styles/estoque.module.css'
+import Header from '../components/Header'
+import BasicModal from '../components/BasicModal.js'
+import styles from '../styles/meusTestes.module.css';
 
-function gerenteMateriais() {
+function GerenteMateriais() {
 
     const [dados, setDados] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/testes`)
+        axios.get(`http://localhost:3001/materiais`)
             .then((c) => {
-                console.log(c)
-                setDados(c.data);
+                console.log(c.data.rows)
+                setDados(c.data.rows);
             }
             )
     }, []);
@@ -25,12 +27,16 @@ function gerenteMateriais() {
     const columns = React.useMemo(
         () => [
             {
-                Header: 'Produto',
-                accessor: 'produto',
+                Header: 'ID_material',
+                accessor: '0',
+            },
+            {
+                Header: 'Nome',
+                accessor: '1',
             },
             {
                 Header: 'Quantidade',
-                accessor: 'quantidade',
+                accessor: '2',
             },
             {
                 Header: 'Opções',
@@ -38,19 +44,36 @@ function gerenteMateriais() {
                 Cell: (value) => {
                     return (
                         <>
-                            <button
-                                className="TableButton"
-                                type="button"
-                                onClick={() => handleStaffEditClick(value.cell.row.original)}
-                            >
-                                Editar
-                            </button>{' '}
-                            <button
-                                className="TableButton"
-                                onClick={() => handleDeleteUserClick(value.cell.row.original)}
-                            >
-                                Excluir
-                            </button>
+                            <span className="buttons">
+                                <button
+                                    className="TableButton"
+                                    type="button"
+                                    onClick={() => handleStaffEditClick(value.cell.row.original)}
+                                >
+                                    Editar
+                                </button>{' '}
+                                <button
+                                    className="TableButton"
+                                    onClick={() => handleDeleteUserClick(value.cell.row.original)}
+                                >
+                                    Excluir
+                                </button>
+                                <style jsx>{`
+                                .TableButton{
+                                    background-color:#791E94;
+                                    color: white;
+                                    border-radius: 10px;
+                                    padding: 5px;
+                                    border-color: #791E94;
+                                }
+                                .buttons{
+                                display: flex;
+                                justify-content: space-around;
+                                }
+                                `}</style>
+                            </span>
+
+
                         </>
                     );
                 }
@@ -61,13 +84,22 @@ function gerenteMateriais() {
 
 
     return (
-        <div className={styles.estoque}>
-            <h1 className={styles.titulo}>Estoque</h1>
+        <div className={styles.meusTestes}>
+            <Header></Header>
 
-            <SortTable InitialPageSize={3} columns={columns} data={dados}></SortTable>
+            <div >
+                <h1 className={styles.titulo}>Materiais</h1>
+                <div className={styles.cimaDaTabela}>
+                    <BasicModal confirmModal={(teste) => {
+                        handleClickAdd(teste)
+                    }} />
+                </div>
 
+                <SortTable InitialPageSize={10} columns={columns} data={dados}></SortTable>
+
+            </div>
         </div>
     )
 }
 
-export default gerenteMateriais;
+export default GerenteMateriais;

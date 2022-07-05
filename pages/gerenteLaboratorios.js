@@ -94,6 +94,7 @@ function Estoque() {
 
     return (
         <div className={styles.meusTestes}>
+            <Header></Header>
 
             <div >
                 <h1 className={styles.titulo}>Laboratório</h1>
