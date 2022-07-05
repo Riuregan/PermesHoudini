@@ -34,7 +34,6 @@ export default function ModalLab({ confirmModal, dados, setDados, open, setOpen,
 
     return (
         <div>
-            <Button className={styles.button} onClick={handleOpen}>Adicionar novo laboratório</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -55,7 +54,7 @@ export default function ModalLab({ confirmModal, dados, setDados, open, setOpen,
                     </div>
                     <div className={styles.input}>
                         <label htmlFor="data"><h2>Numero:</h2></label>
-                        <input max="31/12/9999" onChange={handleChange} value={dados.numero} name="numero"></input>
+                        <input type='date' max="31/12/9999" onChange={handleChange} value={dados.numero} name="numero"></input>
                     </div>
                     {/* <div className={styles.input}>
                         <label for="data"><h2>CPF do gerente:</h2></label>

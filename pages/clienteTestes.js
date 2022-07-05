@@ -31,7 +31,7 @@ export default function ClienteTestes() {
         axios.post(`http://localhost:3001/postTestes`, {
             id_teste: id,
             usuario_cpf: userAtual.user[0],
-            time_teste: new Date('21, 12, 2003'),
+            time_teste: teste.time_teste,
             id_tipo_teste: parseInt(teste.id_tipo_teste),
         })
             .then(function (response) {
