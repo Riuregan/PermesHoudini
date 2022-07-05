@@ -4,7 +4,7 @@ import cors from "cors";
 import routes from './routes.js'
 
 const app = express();
-oracledb.autoCommit = true
+
 
 oracledb.initOracleClient({
     libDir: "C:\\Users\\vitor\\Desktop\\instantclient_21_6",
@@ -85,7 +85,6 @@ app.use(routes);
 // });
 
 // app.put('/update/:userId', (req, res) => {
-//     oracledb.getConnection(dbConfig)
 //         .then((c) => {
 //             connection = c;
 //             return connection.execute("UPDATE time SET nome = :nome WHERE id = :id",

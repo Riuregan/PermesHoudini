@@ -3,25 +3,70 @@ import SortTable from '../components/table.js'
 import axios from "axios"
 import styles from '../styles/estoque.module.css'
 import ModalMateriais from '../components/modal/ModalMateriais'
+import Button from '@mui/material/Button';
 
 function GerenteMateriais() {
 
     const [dados, setDados] = useState([]);
+    const [type, setType] = useState(false);
+    const [open, setOpen] = React.useState(false);
+    const [dadosMat, setDadosMat] = useState([]);
 
     useEffect(() => {
         axios.get(`http://localhost:3001/materiais`)
             .then((c) => {
-                console.log(c.data.rows)
                 setDados(c.data.rows);
             }
             )
-    }, []);
+    }, [dados]);
 
-
-    const handleClickAdd = () => {
-        console.log(userAtual)
+    const handleClickAdd = (material) => {
+        const id = Math.floor(Math.random() * 100 + 20);
+        console.log('add')
+        console.log(material)
+        axios.post(`http://localhost:3001/postMateriais`, {
+            nome: material.nome,
+            quantidade: material.quantidade,
+            id_material: id,
+        })
+            .then(function (response) {
+                console.log(response);
+                setDados([])
+            })
     }
 
+    const handleClickEdit = (material) => {
+        console.log('edit')
+        console.log(material)
+        axios.put(`http://localhost:3001/putMateriais/${material.id_material}`, {
+            nome: material.nome,
+            quantidade: material.quantidade,
+        })
+            .then(function (response) {
+                console.log(response);
+                setDados([])
+            })
+    }
+
+
+    const handleEdit = (material) => {
+        console.log(material);
+        setDadosMat({
+            nome: material[1],
+            quantidade: material[2],
+            id_material: material[0]
+        })
+        setType(false);
+        handleOpen()
+
+    }
+    const handleAdd = () => {
+        setDadosMat([])
+        setType(true);
+        handleOpen()
+    }
+
+    const handleOpen = () => setOpen(true);
 
     const columns = React.useMemo(
         () => [
@@ -47,7 +92,7 @@ function GerenteMateriais() {
                                 <button
                                     className="TableButton"
                                     type="button"
-                                    onClick={() => handleStaffEditClick(value.cell.row.original)}
+                                    onClick={() => handleEdit(value.cell.row.original)}
                                 >
                                     Editar
                                 </button>{' '}
@@ -87,8 +132,9 @@ function GerenteMateriais() {
             <div className={styles.estoque}>
                 <h1 className={styles.titulo}>Estoque</h1>
                 <div className={styles.cimaDaTabela}>
-                    <ModalMateriais confirmModal={(teste) => {
-                        handleClickAdd(teste)
+                    <Button className={styles.button} onClick={handleAdd}>Solicitar novo teste</Button>
+                    <ModalMateriais open={open} setOpen={setOpen} dados={dadosMat} setDados={setDadosMat} type={type} confirmModal={(material) => {
+                        type ? handleClickAdd(material) : handleClickEdit(material)
                     }} />
                 </div>
 

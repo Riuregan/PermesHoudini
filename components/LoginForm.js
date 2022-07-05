@@ -34,7 +34,7 @@ function LoginForm() {
           Router.push('/funcionarioTestes') // funcionario
         } else {
           dispatch(addUser(res2.data.rows[0]));
-          Router.push('/gerenteLaboratorios') //gerente
+          Router.push('/gerenteMateriais') //gerente
         }
       } else {
         dispatch(addUser(res1.data.rows[0]));
@@ -69,7 +69,7 @@ function LoginForm() {
         </div>
         <div className={styles.loginDirecao} >
           <div>
-            <p>Não tem conta? <a href='/cadastro'>Cadastre-se</a></p>
+            <p>Não tem conta? <a htmlFor='/cadastro'>Cadastre-se</a></p>
           </div>
           <button type="button" className={styles.loginButton} placeholder="Login client..." onClick={handleLoginClient}>Logar</button>
         </div>
