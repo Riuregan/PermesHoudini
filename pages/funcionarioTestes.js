@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import SortTable from '../components/table.js'
 import axios from "axios"
-import Header from '../components/Header'
-import BasicModal from '../components/BasicModal.js'
+import Header from '../components/header/HeaderCliente'
 import styles from '../styles/meusTestes.module.css';
 import { useSelector } from "react-redux";
 
@@ -13,7 +12,7 @@ function FuncionarioTestes() {
     const userAtual = useSelector((state) => state.user);
 
     useEffect(() => {
-        console.log(userAtual.user[0])
+        //console.log(userAtual.user[0])
         console.log('userAtual.user[0]')
         axios.get(`http://localhost:3001/testesFunc/${userAtual.user[0]}`)
             .then((c) => {
@@ -32,28 +31,28 @@ function FuncionarioTestes() {
     const columns = React.useMemo(
         () => [
             {
-                Header: 'Usuario_CPF',
-                accessor: '1',
-            },
-            {
-                Header: 'ID_tipo_teste',
+                Header: 'Nome',
                 accessor: '2',
             },
             {
-                Header: 'Time_teste',
+                Header: 'funcionario_cpf',
+                accessor: '1',
+            },
+            {
+                Header: 'Data da coleta',
                 accessor: '3',
             },
             {
-                Header: 'Time_entrega',
+                Header: 'Data da entrega',
                 accessor: '4',
             },
             {
-                Header: 'Funcionario_CPF',
-                accessor: '6',
+                Header: 'Laboratório',
+                accessor: '5',
             },
             {
                 Header: 'Opções',
-                accessor: 'options',
+                accessor: '6',
                 Cell: (value) => {
                     return (
                         <>
@@ -95,14 +94,12 @@ function FuncionarioTestes() {
         []
     );
 
-
     return (
         <div className={styles.meusTestes}>
-            <Header></Header>
 
+            <Header />
             <div >
-                <h1 className={styles.titulo}>Laboratório</h1>
-
+                <h1 className={styles.titulo}>Testes</h1>
 
                 <SortTable InitialPageSize={3} columns={columns} data={dados}></SortTable>
 

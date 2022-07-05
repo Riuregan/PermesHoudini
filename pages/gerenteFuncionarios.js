@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import SortTable from '../components/table.js'
 import axios from "axios"
-import Header from '../components/Header'
+import Header from '../components/Header/HeaderGerente'
 import BasicModal from '../components/BasicModal.js'
 import styles from '../styles/meusTestes.module.css';
 

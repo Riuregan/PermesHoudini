@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import SortTable from '../components/table.js'
 import axios from "axios"
-import Header from '../components/Header'
-import BasicModal from '../components/BasicModal.js'
+import Header from '../components/header/HeaderCliente'
+import ModalLab from '../components/modal/ModalLab.js'
 import styles from '../styles/meusTestes.module.css';
 
 function Estoque() {
@@ -99,7 +99,7 @@ function Estoque() {
             <div >
                 <h1 className={styles.titulo}>Laboratório</h1>
                 <div className={styles.cimaDaTabela}>
-                    <BasicModal confirmModal={(teste) => {
+                    <ModalLab confirmModal={(teste) => {
                         handleClickAdd(teste)
                     }} />
                 </div>

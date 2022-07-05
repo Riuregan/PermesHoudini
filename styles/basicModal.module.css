@@ -9,7 +9,7 @@
 }
 
 
-.box{
+.box {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,24 +17,25 @@
     border-radius: 20px;
 }
 
-.input{
+.input {
     display: flex;
     margin: 2vh 0;
     align-items: flex-start;
 }
 
-.input label h2{
+.input label h2 {
     font-weight: 500;
 }
 
-.input select, .input input{
+.input select,
+.input input {
     width: 20vw;
     height: 3vh;
     margin-left: 2vw;
     border-radius: 20px;
 }
 
-.box .button{
+.box .button {
     align-self: flex-end;
     margin-right: 4%;
 }

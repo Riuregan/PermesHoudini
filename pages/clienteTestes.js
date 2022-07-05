@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from 'react'
 import styles from '../styles/meusTestes.module.css';
-import Header from '../components/Header'
+import Header from '../components/header/HeaderCliente'
 import axios from "axios"
 import SortTable from '../components/table.js'
-import BasicModal from '../components/BasicModal.js'
+import BasicModal from '../components/modal/BasicModal.js'
 import { useSelector } from "react-redux";
 
 

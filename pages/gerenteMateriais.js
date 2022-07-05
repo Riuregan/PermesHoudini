@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import SortTable from '../components/table.js'
 import axios from "axios"
-import Header from '../components/Header'
-import BasicModal from '../components/BasicModal.js'
-import styles from '../styles/meusTestes.module.css';
+import styles from '../styles/estoque.module.css'
+import ModalMateriais from '../components/modal/ModalMateriais'
 
 function GerenteMateriais() {
 
@@ -84,20 +83,16 @@ function GerenteMateriais() {
 
 
     return (
-        <div className={styles.meusTestes}>
-            <Header></Header>
-
-            <div >
-                <h1 className={styles.titulo}>Materiais</h1>
-                <div className={styles.cimaDaTabela}>
-                    <BasicModal confirmModal={(teste) => {
-                        handleClickAdd(teste)
-                    }} />
-                </div>
-
-                <SortTable InitialPageSize={10} columns={columns} data={dados}></SortTable>
-
+        <div className={styles.estoque}>
+            <h1 className={styles.titulo}>Estoque</h1>
+            <div className={styles.cimaDaTabela}>
+                <ModalMateriais confirmModal={(teste) => {
+                    handleClickAdd(teste)
+                }} />
             </div>
+
+            <SortTable InitialPageSize={10} columns={columns} data={dados}></SortTable>
+
         </div>
     )
 }

@@ -8,7 +8,8 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import styles from "../styles/header.module.css"
+import styles from "../../styles/header.module.css"
+
 export default function Header() {
     <script src="https://kit.fontawesome.com/8a0b54b24f.js" crossorigin="anonymous"></script>
     return (
@@ -31,21 +32,24 @@ export default function Header() {
                 <div className={styles.divTypography}>
                     <Typography className={styles.typography} variant="h6"
                         component="div" >
-                        Meus exames
+                        <a href="/clienteTestes">Meus testes</a>
                     </Typography>
                     <Typography className={styles.typography} variant="h6"
                         component="div" >
-                        Solicitar exame
-                    </Typography>
-                    <Typography className={styles.typography} onClick={() => console.log("teste")} variant="h6"
-                        component="div" >
-                        Laborátorios
+                        <a href="/perfil">Perfil</a>
 
                     </Typography>
+                    {/*<Typography className={styles.typography} onClick={() => console.log("teste")} variant="h6"
+                        component="div" >
+                        Laborátorios}
+                
+
+                    </Typography>*/
+                    }
                 </div>
 
                 <Button color="inherit" >Logout</Button>
             </Toolbar>
-        </AppBar>
+        </AppBar >
     );
 }
