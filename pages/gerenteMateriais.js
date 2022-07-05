@@ -83,17 +83,20 @@ function GerenteMateriais() {
 
 
     return (
-        <div className={styles.estoque}>
-            <h1 className={styles.titulo}>Estoque</h1>
-            <div className={styles.cimaDaTabela}>
-                <ModalMateriais confirmModal={(teste) => {
-                    handleClickAdd(teste)
-                }} />
+        <div>
+            <div className={styles.estoque}>
+                <h1 className={styles.titulo}>Estoque</h1>
+                <div className={styles.cimaDaTabela}>
+                    <ModalMateriais confirmModal={(teste) => {
+                        handleClickAdd(teste)
+                    }} />
+                </div>
+
+                <SortTable InitialPageSize={10} columns={columns} data={dados}></SortTable>
+
             </div>
-
-            <SortTable InitialPageSize={10} columns={columns} data={dados}></SortTable>
-
         </div>
+
     )
 }
 

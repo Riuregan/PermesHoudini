@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import SortTable from '../components/table.js'
 import axios from "axios"
 import Header from '../components/Header/HeaderGerente'
-import BasicModal from '../components/BasicModal.js'
+import ModalAddFuncionario from '../components/modal/ModalAddFuncionario.js'
 import styles from '../styles/meusTestes.module.css';
 
 function Funcionarios() {
@@ -99,7 +99,7 @@ function Funcionarios() {
             <div >
                 <h1 className={styles.titulo}>Funcionários</h1>
                 <div className={styles.cimaDaTabela}>
-                    <BasicModal confirmModal={(teste) => {
+                    <ModalAddFuncionario confirmModal={(teste) => {
                         handleClickAdd(teste)
                     }} />
                 </div>

@@ -7,20 +7,21 @@ import { useSelector } from "react-redux";
 
 function FuncionarioTestes() {
 
+
     const [dados, setDados] = useState([]);
 
     const userAtual = useSelector((state) => state.user);
 
-    useEffect(() => {
-        //console.log(userAtual.user[0])
-        console.log('userAtual.user[0]')
-        axios.get(`http://localhost:3001/testesFunc/${userAtual.user[0]}`)
-            .then((c) => {
-                console.log(c.data.rows)
-                setDados(c.data.rows);
-            }
-            )
-    }, []);
+    // useEffect(() => {
+    //     //console.log(userAtual.user[0])
+    //     console.log('userAtual.user[0]')
+    //     axios.get(`http://localhost:3001/testesFunc/${userAtual.user[0]}`)
+    //         .then((c) => {
+    //             console.log(c.data.rows)
+    //             setDados(c.data.rows);
+    //         }
+    //         )
+    // }, []);
 
 
     const handleClickAdd = () => {
