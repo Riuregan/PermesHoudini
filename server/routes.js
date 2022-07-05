@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { loginGerente, loginFunc, loginClient } from './controllers/login.controller.js'
 import { getTestes, getTestesFunc, postTestes } from './controllers/testes.controller.js'
-import { getLaboratorio } from './controllers/laboratorio.controller.js'
+import { getLaboratorio, postLaboratorios, putLaboratorios } from './controllers/laboratorio.controller.js'
 import { getFuncionarios } from './controllers/funcionarios.controller.js'
 import { getMateriais } from './controllers/materiais.controller.js'
 
@@ -20,6 +20,8 @@ routes.post('/postTestes', postTestes);
 
 //laboratorios
 routes.get('/laboratorio', getLaboratorio);
+routes.post('/postLaboratorio', postLaboratorios);
+routes.put('/putLaboratorio/:cpf_gerente', putLaboratorios)
 
 //funcionarios
 routes.get('/funcionarios', getFuncionarios);

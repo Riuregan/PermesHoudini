@@ -31,12 +31,16 @@ function FuncionarioTestes() {
     const columns = React.useMemo(
         () => [
             {
-                Header: 'Nome',
+                Header: 'ID_tipo_teste',
                 accessor: '2',
             },
             {
-                Header: 'funcionario_cpf',
+                Header: 'usuario_cpf',
                 accessor: '1',
+            },
+            {
+                Header: 'funcionario_cpf',
+                accessor: '6',
             },
             {
                 Header: 'Data da coleta',
@@ -47,12 +51,8 @@ function FuncionarioTestes() {
                 accessor: '4',
             },
             {
-                Header: 'Laboratório',
-                accessor: '5',
-            },
-            {
                 Header: 'Opções',
-                accessor: '6',
+                accessor: '5',
                 Cell: (value) => {
                     return (
                         <>

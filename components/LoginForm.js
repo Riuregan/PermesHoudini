@@ -31,10 +31,10 @@ function LoginForm() {
           alert('usuário não encontrado')
         } else if (res3.data.rows[0] == undefined) {
           dispatch(addUser(res2.data.rows[0]));
-          Router.push('/gerenteMateriais') // funcionario
+          Router.push('/funcionarioTestes') // funcionario
         } else {
           dispatch(addUser(res2.data.rows[0]));
-          Router.push('/funcionarioTestes') //gerente
+          Router.push('/gerenteLaboratorios') //gerente
         }
       } else {
         dispatch(addUser(res1.data.rows[0]));

@@ -39,7 +39,7 @@ export function getTestesFunc(req, res) {
     oracledb.getConnection(dbConfig)
         .then((c) => {
             connection = c;
-            return connection.execute("select * from testes where funcionarios_cpf != :cpf and funcionarios_cpf = ''", {
+            return connection.execute(" select * from testes where funcionarios_cpf = :cpf or funcionarios_cpf is null", {
                 cpf: req.params.cpf,
             });
         }).then((result) => {
