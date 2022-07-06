@@ -4,7 +4,6 @@ oracledb.autoCommit = true
 
 //get laboratorios
 export function getMateriais(req, res) {
-    let users = new Array();
     let connection;
     oracledb.getConnection(dbConfig)
         .then((c) => {
@@ -56,21 +55,44 @@ export function postMateriais(req, res) {
 //put materiais
 
 export function putMateriais(req, res) {
+    let connection;
     oracledb.getConnection(dbConfig)
         .then((c) => {
             console.log(c)
             console.log("AQUII")
             connection = c;
-            return connection.execute("UPDATE material SET nome = :nome , quantidade = :quantidade WHERE id_material = :id_material",
+            return connection.execute("update material SET nome = :nome , quantidade = :quantidade WHERE id_material = :id_material",
                 {
-                    nome: req.body.nome,
-                    quantidade: req.body.quantidade,
                     id_material: req.params.id_material,
+                    nome: req.body.nome,
+                    quantidade: req.body.quantidade
                 });
         }).then((c) => {
             console.log('AQUIIddII')
             console.log(c)
             res.status(200).json(c);
+        }).then(() => {
+            if (connection) {
+                connection.close();
+            }
+        }).catch((error) => {
+            res.status(500).json({ message: error.message || "Some error occurred!" });
+        });
+};
+
+//delete materiais
+
+export function deleteMateriais(req, res) {
+    let connection;
+    oracledb.getConnection(dbConfig)
+        .then((c) => {
+            connection = c;
+            return connection.execute("DELETE FROM material WHERE nome = :nome",
+                {
+                    nome: req.params.nome
+                });
+        }).then(() => {
+            res.status(200).json("User successfully deleted!");
         }).then(() => {
             if (connection) {
                 connection.close();

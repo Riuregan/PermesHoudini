@@ -61,7 +61,6 @@ export default function ModalLab({ confirmModal, dados, setDados, open, setOpen,
                         <input max="31/12/9999" onChange={handleChange} name="time_teste"></input>
                     </div> */}
                     <button onClick={() => { confirmModal(dados); setOpen(false); }} className={styles.button}>Adicionar</button>
-
                 </Box>
             </Modal>
         </div>

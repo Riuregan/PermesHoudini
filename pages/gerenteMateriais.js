@@ -4,21 +4,28 @@ import axios from "axios"
 import styles from '../styles/estoque.module.css'
 import ModalMateriais from '../components/modal/ModalMateriais'
 import Header from '../components/header/HeaderGerente'
+import ModalDelete from '../components/modal/ModalDelete'
+import Button from '@mui/material/Button';
+import LoaderSpinner from '../components/LoaderSpinner';
 
 function GerenteMateriais() {
 
     const [dados, setDados] = useState([]);
+    const [deleteID, setDeleteID] = useState('');
     const [type, setType] = useState(false);
     const [open, setOpen] = React.useState(false);
+    const [openDelete, setOpenDelete] = React.useState(false);
     const [dadosMat, setDadosMat] = useState([]);
+    const [helperEffect, setHelperEffect] = useState(false);
 
     useEffect(() => {
         axios.get(`http://localhost:3001/materiais`)
             .then((c) => {
                 setDados(c.data.rows);
+                setHelperEffect(false)
             }
             )
-    }, [dados]);
+    }, [helperEffect]);
 
     const handleClickAdd = (material) => {
         const id = Math.floor(Math.random() * 100 + 20);
@@ -31,7 +38,7 @@ function GerenteMateriais() {
         })
             .then(function (response) {
                 console.log(response);
-                setDados([])
+                setHelperEffect(true)
             })
     }
 
@@ -44,8 +51,19 @@ function GerenteMateriais() {
         })
             .then(function (response) {
                 console.log(response);
-                setDados([])
+                setHelperEffect([])
             })
+    }
+
+    const handleDeleteClick = (id) => {
+        console.log('delete')
+        console.log(id)
+        axios.delete(`http://localhost:3001/deleteMateriais/${id[1]}`)
+            .then(function (response) {
+                console.log(response);
+                setHelperEffect([])
+            })
+
     }
 
 
@@ -66,7 +84,15 @@ function GerenteMateriais() {
         handleOpen()
     }
 
+    const handleDelete = (id) => {
+        setDeleteID(id)
+        handleOpenDelete(true)
+    }
+
+
     const handleOpen = () => setOpen(true);
+
+    const handleOpenDelete = () => setOpenDelete(true);
 
     const columns = React.useMemo(
         () => [
@@ -101,13 +127,10 @@ function GerenteMateriais() {
                                 </div>
                                 <button
                                     className="TableButton"
-                                    onClick={() => handleDeleteUserClick(value.cell.row.original)}
+                                    onClick={() => handleDelete(value.cell.row.original)}
                                 >
                                     Excluir
                                 </button>
-                                <ModalDelete open={open} setOpen={setOpen} confirmModal={(teste) => {
-                                    handleClickAdd(teste)
-                                }} />
                                 <style jsx>{`
                                 .TableButton{
                                     background-color:#791E94;
@@ -134,21 +157,25 @@ function GerenteMateriais() {
 
 
     return (
-        <div>
+        <div >
             <Header />
             <div className={styles.estoque}>
                 <h1 className={styles.titulo}>Estoque</h1>
                 <div className={styles.cimaDaTabela}>
+                    <ModalDelete open={openDelete} setOpen={setOpenDelete} id={deleteID} confirmModal={(id) => handleDeleteClick(id)}></ModalDelete>
                     <Button className={styles.button} onClick={handleAdd}>Solicitar novo teste</Button>
                     <ModalMateriais open={open} setOpen={setOpen} dados={dadosMat} setDados={setDadosMat} type={type} confirmModal={(material) => {
                         type ? handleClickAdd(material) : handleClickEdit(material)
                     }} />
                 </div>
-
-                <SortTable InitialPageSize={10} columns={columns} data={dados}></SortTable>
-
+                <>
+                    {
+                        helperEffect ? <LoaderSpinner></LoaderSpinner> :
+                            <SortTable InitialPageSize={10} columns={columns} data={dados}></SortTable>
+                    }
+                </ >
             </div>
-        </div>
+        </div >
 
     )
 }

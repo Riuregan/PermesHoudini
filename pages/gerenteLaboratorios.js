@@ -125,9 +125,6 @@ function Estoque() {
                                     >
                                         Excluir
                                     </button>
-                                    <ModalDelete open={open} setOpen={setOpen} confirmModal={(teste) => {
-                                        handleClickAdd(teste)
-                                    }} />
                                 </div>
 
                                 <style jsx>{`

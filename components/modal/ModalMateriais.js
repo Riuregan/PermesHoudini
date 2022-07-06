@@ -51,7 +51,7 @@ export default function ModalMateriais({ confirmModal, open, setOpen, dados, set
                         <label htmlFor="data"><h2>Quantidade:</h2></label>
                         <input onChange={handleChange} value={dados.quantidade} name="quantidade"></input>
                     </div>
-                    <button onClick={() => { confirmModal(dados); setOpen(false); }} className={styles.button}>Adicionar</button>
+                    <button onClick={() => { confirmModal(dados); setOpen(false); }} className={styles.button}>{type ? 'Adicionar' : 'Editar'}</button>
 
                 </Box>
             </Modal>

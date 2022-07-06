@@ -3,7 +3,7 @@ import { loginGerente, loginFunc, loginClient } from './controllers/login.contro
 import { getTestes, getTestesFunc, postTestes } from './controllers/testes.controller.js'
 import { getLaboratorio, postLaboratorios, putLaboratorios } from './controllers/laboratorio.controller.js'
 import { getFuncionarios } from './controllers/funcionarios.controller.js'
-import { getMateriais, postMateriais, putMateriais } from './controllers/materiais.controller.js'
+import { getMateriais, postMateriais, putMateriais, deleteMateriais } from './controllers/materiais.controller.js'
 
 
 const routes = Router();
@@ -29,6 +29,7 @@ routes.get('/funcionarios', getFuncionarios);
 //materiais
 routes.get('/materiais', getMateriais);
 routes.post('/postMateriais', postMateriais);
-routes.put('/putMateriais/:id_material', putMateriais) //connection is not defined
+routes.put('/putMateriais/:id_material', putMateriais);
+routes.delete('/deleteMateriais/:nome', deleteMateriais)
 
 export default routes;

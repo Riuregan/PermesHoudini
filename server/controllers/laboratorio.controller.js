@@ -59,7 +59,9 @@ export function postLaboratorios(req, res) {
 //put laboratorio
 
 export function putLaboratorios(req, res) {
+    let connection;
     oracledb.getConnection(dbConfig)
+    l
         .then((c) => {
             console.log(c)
             console.log("AQUII")

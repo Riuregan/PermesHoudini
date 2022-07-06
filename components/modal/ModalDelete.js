@@ -19,26 +19,14 @@ const style = {
     p: 4,
 };
 
-export default function ModalDelete({ confirmModal, open, setOpen }) {
+export default function ModalDelete({ confirmModal, open, setOpen, id }) {
 
+    console.log(id);
     const handleClose = () => setOpen(false);
-
-    const [dados, setDados] = useState();
-
-
-    const handleChange = (value) => {
-        console.log(dados)
-        setDados((prevValues) => ({
-            ...prevValues,
-            [value.target.name]: value.target.value,
-        }));
-
-    };
-
 
     return (
         <div>
-            {/* <Button className={styles.button} onClick={handleOpen}>Solicitar novo teste</Button> */}
+
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -50,8 +38,8 @@ export default function ModalDelete({ confirmModal, open, setOpen }) {
                         <h1 className={styles.titulo}>Deseja mesmo excluir?</h1>
                     </Typography>
                     <div >
-                        <button className={styles.buttons}>Sim</button>
-                        <button className={styles.buttons}>Não</button>
+                        <button className={styles.buttons} onClick={() => { confirmModal(id); setOpen(false); }}>Sim</button>
+                        <button className={styles.buttons} onClick={handleClose}>Não</button>
                     </div>
                 </Box>
             </Modal>
