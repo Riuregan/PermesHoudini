@@ -54,13 +54,17 @@ export default function ModalLab({ confirmModal, dados, setDados, open, setOpen,
                     </div>
                     <div className={styles.input}>
                         <label htmlFor="data"><h2>Numero:</h2></label>
-                        <input type='date' max="31/12/9999" onChange={handleChange} value={dados.numero} name="numero"></input>
+                        <input max="31/12/9999" onChange={handleChange} value={dados.numero} name="numero"></input>
                     </div>
-                    {/* <div className={styles.input}>
-                        <label for="data"><h2>CPF do gerente:</h2></label>
-                        <input max="31/12/9999" onChange={handleChange} name="time_teste"></input>
-                    </div> */}
-                    <button onClick={() => { confirmModal(dados); setOpen(false); }} className={styles.button}>Adicionar</button>
+                    <div className={styles.input}>
+                        <label htmlFor="data"><h2>CPF do gerente:</h2></label>
+                        <input max="31/12/9999" onChange={handleChange} name="gerente_cpf" value={dados.gerente_cpf}></input>
+                    </div>
+                    <div className={styles.input}>
+                        <label htmlFor="data"><h2>Endereço:</h2></label>
+                        <input max="31/12/9999" onChange={handleChange} name="endereco" value={dados.endereco}></input>
+                    </div>
+                    <button onClick={() => { confirmModal(dados); setOpen(false); }} className={styles.button}>{type ? 'Adicionar' : 'Editar'}</button>
                 </Box>
             </Modal>
         </div>

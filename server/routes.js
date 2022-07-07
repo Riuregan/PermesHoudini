@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { loginGerente, loginFunc, loginClient } from './controllers/login.controller.js'
 import { getTestes, getTestesFunc, postTestes } from './controllers/testes.controller.js'
-import { getLaboratorio, postLaboratorios, putLaboratorios } from './controllers/laboratorio.controller.js'
+import { getLaboratorio, postLaboratorios, putLaboratorios, deleteLaboratorio } from './controllers/laboratorio.controller.js'
 import { getFuncionarios } from './controllers/funcionarios.controller.js'
 import { getMateriais, postMateriais, putMateriais, deleteMateriais } from './controllers/materiais.controller.js'
 
@@ -21,7 +21,8 @@ routes.post('/postTestes', postTestes);// erro da data
 //laboratorios
 routes.get('/laboratorio', getLaboratorio);
 routes.post('/postLaboratorio', postLaboratorios);
-routes.put('/putLaboratorio/:cpf_gerente', putLaboratorios) // ajustar
+routes.put('/putLaboratorio/:gerente_cpf', putLaboratorios) // ajustar
+routes.delete('/deleteLaboratorio/:gerente_cpf', deleteLaboratorio) // ajustar
 
 //funcionarios
 routes.get('/funcionarios', getFuncionarios);

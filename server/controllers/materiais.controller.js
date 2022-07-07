@@ -12,7 +12,7 @@ export function getMateriais(req, res) {
 
         }).then((result) => {
             res.status(200).json(result);
-        }).then((app) => {
+        }).then(() => {
             if (connection) {
                 connection.close();
             }
@@ -25,9 +25,7 @@ export function getMateriais(req, res) {
 //post materiais
 
 export function postMateriais(req, res) {
-    let users = new Array();
     let connection;
-    console.log('req.body')
     oracledb.getConnection(dbConfig)
         .then((c) => {
             connection = c;
@@ -38,10 +36,8 @@ export function postMateriais(req, res) {
             });
 
         }).then((result) => {
-            console.log('result')
-            console.log(result)
             res.status(200).json(result);
-        }).then((app) => {
+        }).then(() => {
             if (connection) {
                 connection.close();
             }
@@ -58,8 +54,6 @@ export function putMateriais(req, res) {
     let connection;
     oracledb.getConnection(dbConfig)
         .then((c) => {
-            console.log(c)
-            console.log("AQUII")
             connection = c;
             return connection.execute("update material SET nome = :nome , quantidade = :quantidade WHERE id_material = :id_material",
                 {
@@ -68,8 +62,6 @@ export function putMateriais(req, res) {
                     quantidade: req.body.quantidade
                 });
         }).then((c) => {
-            console.log('AQUIIddII')
-            console.log(c)
             res.status(200).json(c);
         }).then(() => {
             if (connection) {
@@ -81,7 +73,6 @@ export function putMateriais(req, res) {
 };
 
 //delete materiais
-
 export function deleteMateriais(req, res) {
     let connection;
     oracledb.getConnection(dbConfig)

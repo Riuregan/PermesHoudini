@@ -1,85 +1,93 @@
 import React, { useState, useEffect } from 'react'
-import SortTable from '../components/table.js'
 import axios from "axios"
+import Button from '@mui/material/Button';
+
+import SortTable from '../components/table.js'
 import Header from '../components/header/HeaderCliente'
 import ModalLab from '../components/modal/ModalLab.js'
+import ModalDelete from '../components/modal/ModalDelete'
+import LoaderSpinner from '../components/LoaderSpinner';
+
 import styles from '../styles/meusTestes.module.css';
-import { useSelector } from "react-redux";
-import Button from '@mui/material/Button';
 
 function Estoque() {
 
     const [dados, setDados] = useState([]);
-
     const [dadosLab, setDadosLab] = useState([]);
-    const [open, setOpen] = React.useState(false);
-    const [type, setType] = React.useState(false);
+    const [deleteID, setDeleteID] = useState('');
+    const [type, setType] = useState(false);
+    const [helperEffect, setHelperEffect] = useState(false);
 
-    const userAtual = useSelector((state) => state.user);
+    const [open, setOpen] = useState(false);
+    const [openDelete, setOpenDelete] = useState(false);
 
     useEffect(() => {
         axios.get(`http://localhost:3001/laboratorio`)
             .then((c) => {
                 setDados(c.data.rows);
+                setHelperEffect(false);
             }
             )
-    }, [dados]);
-
-    const handleDeleteUserClick = () => {
-        setOpen(true);
-    }
+    }, [helperEffect]);
 
     const handleClickAdd = (laboratorio) => {
-        console.log('add')
-        console.log(userAtual)
-        console.log(laboratorio)
         axios.post(`http://localhost:3001/postLaboratorio`, {
             nome: laboratorio.nome,
             cep: laboratorio.cep,
             numero: laboratorio.numero,
-            gerente_cpf: userAtual.user[0],
+            gerente_cpf: laboratorio.gerente_cpf,
+            endereco: laboratorio.endereco,
         })
             .then(function (response) {
-                console.log(response);
-                setDados([])
+                setHelperEffect(true)
             })
     }
 
     const handleClickEdit = (laboratorio) => {
-        console.log('edit')
-        console.log(userAtual)
-        console.log(laboratorio)
-        axios.put(`http://localhost:3001/putLaboratorio/${laboratorio.gerente_cpf}`, {
+        axios.put(`http://localhost:3001/putLaboratorio/${parseInt(laboratorio.gerente_cpf)}`, {
             nome: laboratorio.nome,
             cep: laboratorio.cep,
             numero: laboratorio.numero,
+            endereco: laboratorio.endereco,
         })
             .then(function (response) {
-                console.log(response);
-                setDados([])
+                setHelperEffect(true)
             })
     }
 
-    const handleEdit = (lab) => {
-        console.log(lab);
-        setDadosLab({
-            nome: lab[2],
-            cep: lab[0],
-            numero: lab[1],
-            gerente_cpf: lab[3]
-        })
-        setType(false);
-        handleOpen()
-
+    const handleClickDelete = (id) => {
+        axios.delete(`http://localhost:3001/deleteLaboratorio/${id[3]}`)
+            .then(function (response) {
+                setHelperEffect(true)
+            })
     }
+
     const handleAdd = () => {
         setDadosLab([])
         setType(true);
         handleOpen()
     }
 
+    const handleEdit = (lab) => {
+        setDadosLab({
+            nome: lab[2],
+            cep: lab[0],
+            numero: lab[1],
+            gerente_cpf: lab[3],
+            endereco: lab[4]
+        })
+        setType(false);
+        handleOpen()
+    }
+
+    const handleDelete = (id) => {
+        setDeleteID(id)
+        handleOpenDelete(true)
+    }
+
     const handleOpen = () => setOpen(true);
 
+    const handleOpenDelete = () => setOpenDelete(true);
 
     const columns = React.useMemo(
         () => [
@@ -121,7 +129,7 @@ function Estoque() {
                                 <div>
                                     <button
                                         className="TableButton"
-                                        onClick={() => handleDeleteUserClick(value.cell.row.original)}
+                                        onClick={() => handleDelete(value.cell.row.original)}
                                     >
                                         Excluir
                                     </button>
@@ -153,17 +161,21 @@ function Estoque() {
     return (
         <div className={styles.meusTestes}>
             <Header></Header>
-
             <div >
                 <h1 className={styles.titulo}>Laboratório</h1>
                 <div className={styles.cimaDaTabela}>
-                    <Button className={styles.button} onClick={handleAdd}>Solicitar novo teste</Button>
+                    <ModalDelete open={openDelete} setOpen={setOpenDelete} id={deleteID} confirmModal={(id) => handleClickDelete(id)}></ModalDelete>
+                    <Button className={styles.button} onClick={handleAdd}>Abrir novo laboratório</Button>
                     <ModalLab dados={dadosLab} setDados={setDadosLab} open={open} setOpen={setOpen} type={type} setType={setType} confirmModal={(laboratorio) => {
                         type ? handleClickAdd(laboratorio) : handleClickEdit(laboratorio)
                     }} />
                 </div>
-
-                <SortTable InitialPageSize={10} columns={columns} data={dados}></SortTable>
+                <>
+                    {
+                        helperEffect ? <LoaderSpinner></LoaderSpinner> :
+                            <SortTable InitialPageSize={10} columns={columns} data={dados}></SortTable>
+                    }
+                </ >
 
             </div>
 
