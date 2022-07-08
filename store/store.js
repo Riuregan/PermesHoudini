@@ -4,12 +4,15 @@ import { HYDRATE, createWrapper } from 'next-redux-wrapper'
 import user from './userSlice'
 import isAuthenticatedFunc from './isAuthenticatedFuncSlice';
 import isAuthenticatedClient from './isAutheticatedClientSlice'
+import isAuthenticatedGerente from './isAuthenticatedGerenteSlice'
 import logger from "redux-logger";
 
 const combinedReducer = combineReducers({
     user,
     isAuthenticatedClient,
-    isAuthenticatedFunc
+    isAuthenticatedFunc,
+    isAuthenticatedGerente
+
 });
 
 const masterReducer = (state, action) => {
@@ -24,6 +27,9 @@ const masterReducer = (state, action) => {
             },
             isAuthenticatedFunc: {
                 isAuthenticatedFunc: [...action.payload.isAuthenticatedFunc.isAuthenticatedFunc, ...state.isAuthenticatedFunc.isAuthenticatedFunc]
+            },
+            isAuthenticatedGerente: {
+                isAuthenticatedGerente: [...action.payload.isAuthenticatedGerente.isAuthenticatedGerente, ...state.isAuthenticatedGerente.isAuthenticatedGerente]
             }
 
         }

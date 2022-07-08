@@ -4,29 +4,65 @@ import axios from "axios"
 import Header from '../components/header/HeaderCliente'
 import styles from '../styles/meusTestes.module.css';
 import { useSelector } from "react-redux";
+import ModalEditTest from '../components/modal/ModalEditTest'
 
 function FuncionarioTestes() {
 
 
     const [dados, setDados] = useState([]);
+    const [dadosEdit, setDadosEdit] = useState([]);
+    const [helperEffect, setHelperEffect] = useState(false);
+
+    const [open, setOpen] = useState(false);
+    const [openDelete, setOpenDelete] = useState(false);
 
     const userAtual = useSelector((state) => state.user);
 
-    // useEffect(() => {
-    //     //console.log(userAtual.user[0])
-    //     console.log('userAtual.user[0]')
-    //     axios.get(`http://localhost:3001/testesFunc/${userAtual.user[0]}`)
-    //         .then((c) => {
-    //             console.log(c.data.rows)
-    //             setDados(c.data.rows);
-    //         }
-    //         )
-    // }, []);
+    useEffect(() => {
+        axios.get(`http://localhost:3001/testesFunc/${userAtual.user[0]}`)
+            .then((c) => {
+                setHelperEffect(false)
+                setDados(c.data.rows);
+            }
+            )
+    }, [helperEffect]);
 
-
-    const handleClickAdd = () => {
-        console.log(userAtual)
+    const handleClickEdit = (value) => {
+        console.log(value.funcionarios_cpf)
+        console.log(value.id_teste)
+        console.log(value.time_entrega)
+        console.log(value.resultado)
+        axios.put(`http://localhost:3001/putTestes/${parseInt(value.id_teste)}`, {
+            funcionarios_cpf: value.funcionarios_cpf,
+            time_entrega: value.time_entrega,
+            resultado: value.resultado,
+        })
+            .then(function (response) {
+                setHelperEffect(true)
+            })
     }
+
+
+    const handleEdit = (teste) => {
+        console.log(teste)
+        setDadosEdit({
+            id_teste: teste[0],
+            funcionarios_cpf: teste[6],
+            time_entrega: teste[4],
+            resultado: teste[5]
+        })
+        handleOpen()
+    }
+
+    const handleDelete = (id) => {
+        console.log(id)
+        // setDeleteID(id)
+        // handleOpenDelete(true)
+    }
+
+    const handleOpen = () => setOpen(true);
+
+    const handleOpenDelete = () => setOpenDelete(true);
 
 
     const columns = React.useMemo(
@@ -61,20 +97,17 @@ function FuncionarioTestes() {
                                 <button
                                     className="TableButton"
                                     type="button"
-                                    onClick={() => handleStaffEditClick(value.cell.row.original)}
+                                    onClick={() => handleEdit(value.cell.row.original)}
                                 >
                                     Editar
                                 </button>{' '}
                                 <div>
                                     <button
                                         className="TableButton"
-                                        onClick={() => handleDeleteUserClick(value.cell.row.original)}
+                                        onClick={() => handleDelete(value.cell.row.original)}
                                     >
                                         Excluir
                                     </button>
-                                    <ModalDelete open={open} setOpen={setOpen} confirmModal={(teste) => {
-                                        handleClickAdd(teste)
-                                    }} />
                                 </div>
 
                                 <style jsx>{`
@@ -107,8 +140,8 @@ function FuncionarioTestes() {
             <Header />
             <div >
                 <h1 className={styles.titulo}>Testes</h1>
-
-                <SortTable InitialPageSize={3} columns={columns} data={dados}></SortTable>
+                <ModalEditTest dados={dadosEdit} setDados={setDadosEdit} open={open} setOpen={setOpen} confirmModal={(value) => handleClickEdit(value)}></ModalEditTest>
+                <SortTable InitialPageSize={10} columns={columns} data={dados}></SortTable>
 
             </div>
 

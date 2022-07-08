@@ -94,3 +94,32 @@ export function postTestes(req, res) {
         });
 
 };
+
+
+//put materiais
+
+export function putTestes(req, res) {
+    let connection;
+    oracledb.getConnection(dbConfig)
+        .then((c) => {
+            console.log(req.body)
+            console.log(req.params)
+            connection = c;
+            return connection.execute("update testes SET funcionarios_cpf = :funcionarios_cpf , time_entrega = :time_entrega, resultado = :resultado WHERE id_teste = :id_teste",
+                {
+                    funcionarios_cpf: req.body.funcionarios_cpf,
+                    time_entrega: req.body.time_entrega,
+                    resultado: req.body.resultado,
+                    id_teste: req.params.id_teste
+                });
+        }).then((c) => {
+            console.log('FFF')
+            res.status(200).json(c);
+        }).then(() => {
+            if (connection) {
+                connection.close();
+            }
+        }).catch((error) => {
+            res.status(500).json({ message: error.message || "Some error occurred!" });
+        });
+};

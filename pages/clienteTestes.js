@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 
 export default function ClienteTestes() {
     const [dados, setDados] = useState([]);
+    const [helperEffect, setHelperEffect] = useState(false);
 
     const userAtual = useSelector((state) => state.user);
 
@@ -18,9 +19,10 @@ export default function ClienteTestes() {
             .then((c) => {
                 console.log(c)
                 setDados(c.data.rows);
+                setHelperEffect(false);
             }
             )
-    }, []);
+    }, [helperEffect]);
 
 
     const handleClickAdd = (teste) => {
@@ -36,6 +38,7 @@ export default function ClienteTestes() {
         })
             .then(function (response) {
                 console.log(response);
+                setHelperEffect(true)
             })
     }
 
@@ -62,10 +65,10 @@ export default function ClienteTestes() {
                 Header: 'Data da entrega',
                 accessor: '4',
             },
-            {
-                Header: 'Resultado',
-                accessor: '5',
-            },
+            // {
+            //     Header: 'Resultado',
+            //     accessor: '5',
+            // },
             // {
             //     Header: 'Opções',
             //     accessor: 'options',
@@ -122,7 +125,7 @@ export default function ClienteTestes() {
                     }} />
                 </div>
 
-                <SortTable InitialPageSize={3} columns={columns} data={dados}></SortTable>
+                <SortTable InitialPageSize={10} columns={columns} data={dados}></SortTable>
 
             </div>
 

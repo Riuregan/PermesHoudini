@@ -23,3 +23,30 @@ export function getFuncionarios(req, res) {
         });
 
 };
+
+
+//get func with cpf
+export function getFuncCPF(req, res) {
+    let users = new Array();
+    console.log('3')
+    let connection;
+
+    oracledb.getConnection(dbConfig)
+        .then((c) => {
+            console.log('2')
+            connection = c;
+            return connection.execute("select * from funcionarios where cpf = :cpf", {
+                cpf: req.params.cpf,
+            });
+        })
+        .then((result) => {
+            res.status(200).json(result);
+        }).then((app) => {
+            if (connection) {
+                connection.close();
+            }
+        }).catch((error) => {
+            res.status(500).json({ message: error.message || "Some error occurred!" });
+        });
+
+}

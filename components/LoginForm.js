@@ -9,17 +9,20 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { ClientAuthenticated } from '../store/isAutheticatedClientSlice'
 import { FuncAuthenticated } from '../store/isAuthenticatedFuncSlice'
+import { GerenteAuthenticated } from '../store/isAuthenticatedGerenteSlice'
 function LoginForm() {
 
 
-  useEffect(()=>{
-    localStorage.setItem("name","um nome ai");
-    localStorage.setItem("senha","12345");
-  },[]);
+  useEffect(() => {
+    localStorage.setItem("name", "um nome ai");
+    localStorage.setItem("senha", "12345");
+    localStorage.setItem("logged", true);
+  }, []);
 
   const dispatch = useDispatch();
   const isAuthenticatedClient = useSelector((state) => state.isAuthenticatedClient);
   const isAuthenticatedFunc = useSelector((state) => state.isAuthenticatedFunc);
+  const isAuthenticatedGerente = useSelector((state) => state.isAuthenticatedGerente);
 
   const [user, setUser] = useState();
 
@@ -37,9 +40,11 @@ function LoginForm() {
           alert('usuário não encontrado')
         } else if (res3.data.rows[0] == undefined) {
           dispatch(addUser(res2.data.rows[0]));
+          dispatch(FuncAuthenticated(!isAuthenticatedFunc.isAuthenticatedFunc));
           Router.push('/funcionarioTestes') // funcionario
         } else {
           dispatch(addUser(res2.data.rows[0]));
+          dispatch(GerenteAuthenticated(!isAuthenticatedGerente.isAuthenticatedGerente));
           Router.push('/gerenteMateriais') //gerente
         }
       } else {

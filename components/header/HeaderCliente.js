@@ -9,9 +9,13 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from '@mui/icons-material/MedicalServices';
 import styles from "../../styles/header.module.css"
+import Router from 'next/router'
 
 export default function Header() {
-    <script src="https://kit.fontawesome.com/8a0b54b24f.js" crossorigin="anonymous"></script>
+
+    const handleClickPerfil = () => Router.push('/perfil');
+    const handleClickMeusTestes = () => Router.push('/clienteTestes');
+
     return (
         <AppBar position="static">
             <Toolbar className={styles.toolbar}>
@@ -33,12 +37,11 @@ export default function Header() {
                 <div className={styles.divTypography}>
                     <Typography className={styles.typography} variant="h6"
                         component="div" >
-                        <a href="/clienteTestes">Meus testes</a>
+                        <div onClick={handleClickMeusTestes}>Meus testes</div>
                     </Typography>
                     <Typography className={styles.typography} variant="h6"
                         component="div" >
-                        <a href="/perfil">Perfil</a>
-
+                        <div onClick={handleClickPerfil}>Perfil</div>
                     </Typography>
                     {/*<Typography className={styles.typography} onClick={() => console.log("teste")} variant="h6"
                         component="div" >
