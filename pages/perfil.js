@@ -1,13 +1,15 @@
 import axios from "axios"
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
-import styles from '../styles/perfil.module.css';
-import SignupForm from '../components/SignupForm'
-import Header from '../components/header/HeaderCliente'
-import Router from 'next/router'
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+
+import HeaderC from '../components/header/HeaderCliente'
+import HeaderF from '../components/header/HeaderFuncionario'
+import HeaderG from '../components/header/HeaderGerente'
 import { addUser } from "../store/userSlice";
+
+import styles from '../styles/perfil.module.css';
 
 export default function Perfil() {
 
@@ -28,9 +30,6 @@ export default function Perfil() {
     const icon = require("../components/images/icon.png");
 
     const handleClickEdit = (user) => {
-        console.log(user.nome)
-        console.log(user.senha)
-        console.log(userAtual)
         if (isAuthenticatedClient.isAuthenticatedClient) {
             axios.put(`http://localhost:3001/putUsuario/${userAtual.user[0]}`, {
                 nome: user.nome,
@@ -86,7 +85,6 @@ export default function Perfil() {
     }
 
     const handleChange = (value) => {
-        console.log(user)
         setUser({
             ...user,
             [value.target.name]: value.target.value,
@@ -97,11 +95,15 @@ export default function Perfil() {
 
     return (
         <div className={styles.page}>
-            <Header />
+            <>
+                {
+                    isAuthenticatedClient.isAuthenticatedClient ? <HeaderC></HeaderC> : isAuthenticatedFunc.isAuthenticatedFunc ? <HeaderF></HeaderF> : <HeaderG></HeaderG>
+                }
 
+            </>
             <div className={styles.perfil}>
                 <div className={styles.img}>
-                    <Image src={icon}></Image>
+                    <Image alt="" src={icon}></Image>
                 </div>
                 <div className={styles.box}>
                     <h1>Perfil</h1>

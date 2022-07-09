@@ -3,7 +3,7 @@ import axios from "axios"
 import Button from '@mui/material/Button';
 
 import SortTable from '../components/table.js'
-import Header from '../components/header/HeaderCliente'
+import Header from '../components/header/HeaderGerente'
 import ModalLab from '../components/modal/ModalLab.js'
 import ModalDelete from '../components/modal/ModalDelete'
 import LoaderSpinner from '../components/LoaderSpinner';

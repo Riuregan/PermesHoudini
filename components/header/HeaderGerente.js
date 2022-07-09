@@ -10,8 +10,15 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from '@mui/icons-material/MedicalServices';
 import styles from "../../styles/header.module.css"
 
+import Router from 'next/router'
+
+const handleClickFuncionarios = () => Router.push('/gerenteFuncionarios');
+const handleClickEstoque = () => Router.push('/gerenteMateriais');
+const handleClickLaboratorios = () => Router.push('/gerenteLaboratorios');
+const handleClickPerfil = () => Router.push('/perfil');
+
 export default function HeaderGerente() {
-    <script src="https://kit.fontawesome.com/8a0b54b24f.js" crossorigin="anonymous"></script>
+
     return (
         <AppBar position="static">
             <Toolbar className={styles.toolbar}>
@@ -33,16 +40,21 @@ export default function HeaderGerente() {
                 <div className={styles.divTypography}>
                     <Typography className={styles.typography} variant="h6"
                         component="div" >
-                        <a href="/gerenteFuncionarios">Funcionários</a>
+                        <div style={{ cursor: 'pointer' }} onClick={handleClickFuncionarios}>Funcionários</div>
                     </Typography>
                     <Typography className={styles.typography} variant="h6"
                         component="div" >
-                        <a href="/gerenteMateriais">Estoque</a>
+                        <div style={{ cursor: 'pointer' }} onClick={handleClickEstoque}>Estoque</div>
 
                     </Typography>
                     <Typography className={styles.typography} variant="h6"
                         component="div" >
-                        <a href="/gerenteLaboratórios">Laboratórios</a>
+                        <div style={{ cursor: 'pointer' }} onClick={handleClickLaboratorios}>Laboratórios</div>
+
+                    </Typography>
+                    <Typography className={styles.typography} variant="h6"
+                        component="div" >
+                        <div style={{ cursor: 'pointer' }} onClick={handleClickPerfil}>Perfil</div>
 
                     </Typography>
                     {/*<Typography className={styles.typography} onClick={() => console.log("teste")} variant="h6"

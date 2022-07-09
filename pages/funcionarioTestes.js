@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import SortTable from '../components/table.js'
 import axios from "axios"
-import Header from '../components/header/HeaderCliente'
+import Header from '../components/header/HeaderFuncionario'
 import styles from '../styles/meusTestes.module.css';
 import { useSelector } from "react-redux";
 import ModalEditTest from '../components/modal/ModalEditTest'
