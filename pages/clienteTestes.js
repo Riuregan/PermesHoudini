@@ -6,6 +6,7 @@ import axios from "axios"
 import SortTable from '../components/table.js'
 import BasicModal from '../components/modal/BasicModal.js'
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 
 export default function ClienteTestes() {
@@ -14,10 +15,13 @@ export default function ClienteTestes() {
 
     const userAtual = useSelector((state) => state.user);
 
+    const dispatch = useDispatch();
+
     useEffect(() => {
         axios.get(`http://localhost:3001/testes`)
             .then((c) => {
-                console.log(c)
+                console.log(c.data.rows)
+                console.log(c.data.rows)
                 setDados(c.data.rows);
                 setHelperEffect(false);
             }

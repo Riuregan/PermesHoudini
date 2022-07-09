@@ -5,6 +5,7 @@ import Header from '../components/header/HeaderCliente'
 import styles from '../styles/meusTestes.module.css';
 import { useSelector } from "react-redux";
 import ModalEditTest from '../components/modal/ModalEditTest'
+import ModalDelete from '../components/modal/ModalDelete'
 
 function FuncionarioTestes() {
 
@@ -12,6 +13,7 @@ function FuncionarioTestes() {
     const [dados, setDados] = useState([]);
     const [dadosEdit, setDadosEdit] = useState([]);
     const [helperEffect, setHelperEffect] = useState(false);
+    const [deleteID, setDeleteID] = useState('');
 
     const [open, setOpen] = useState(false);
     const [openDelete, setOpenDelete] = useState(false);
@@ -54,10 +56,19 @@ function FuncionarioTestes() {
         handleOpen()
     }
 
-    const handleDelete = (id) => {
+    const handleClickDelete = (id) => {
         console.log(id)
-        // setDeleteID(id)
-        // handleOpenDelete(true)
+        axios.delete(`http://localhost:3001/deleteTestes/${id[0]}`)
+            .then(function (response) {
+                setHelperEffect(true)
+            })
+
+    }
+
+
+    const handleDelete = (id) => {
+        setDeleteID(id)
+        handleOpenDelete(true)
     }
 
     const handleOpen = () => setOpen(true);
@@ -140,6 +151,7 @@ function FuncionarioTestes() {
             <Header />
             <div >
                 <h1 className={styles.titulo}>Testes</h1>
+                <ModalDelete open={openDelete} setOpen={setOpenDelete} id={deleteID} confirmModal={(id) => handleClickDelete(id)}></ModalDelete>
                 <ModalEditTest dados={dadosEdit} setDados={setDadosEdit} open={open} setOpen={setOpen} confirmModal={(value) => handleClickEdit(value)}></ModalEditTest>
                 <SortTable InitialPageSize={10} columns={columns} data={dados}></SortTable>
 

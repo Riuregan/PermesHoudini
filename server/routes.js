@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import { loginGerente, loginFunc, loginClient } from './controllers/login.controller.js'
-import { getTestes, getTestesFunc, postTestes, putTestes } from './controllers/testes.controller.js'
+import { getTestes, getTestesFunc, postTestes, putTestes, deleteTestes } from './controllers/testes.controller.js'
 import { getLaboratorio, postLaboratorios, putLaboratorios, deleteLaboratorio } from './controllers/laboratorio.controller.js'
-import { getFuncionarios, getFuncCPF } from './controllers/funcionarios.controller.js'
+import { getFuncionarios, putFuncionarios } from './controllers/funcionarios.controller.js'
 import { getMateriais, postMateriais, putMateriais, deleteMateriais } from './controllers/materiais.controller.js'
-import { putUsuario, getClientCPF, postUsuario } from './controllers/usuario.controller.js'
+import { putUsuario, postUsuario } from './controllers/usuario.controller.js'
 
 const routes = Router();
 
@@ -18,6 +18,7 @@ routes.get('/testes', getTestes);
 routes.get('/testesFunc/:cpf', getTestesFunc);
 routes.post('/postTestes', postTestes);
 routes.put('/putTestes/:id_teste', putTestes);
+routes.delete('/deleteTestes/:id_teste', deleteTestes);
 
 //laboratorios
 routes.get('/laboratorio', getLaboratorio);
@@ -27,7 +28,8 @@ routes.delete('/deleteLaboratorio/:gerente_cpf', deleteLaboratorio) // ajustar
 
 //funcionarios
 routes.get('/funcionarios', getFuncionarios);
-routes.get('/getFuncCPF/:cpf', getFuncCPF);
+routes.put('/putFuncionarios/:cpf', putFuncionarios);
+
 
 //materiais
 routes.get('/materiais', getMateriais);
@@ -37,7 +39,6 @@ routes.delete('/deleteMateriais/:nome', deleteMateriais)
 
 //usuarios
 routes.put('/putUsuario/:cpf', putUsuario)
-routes.get('/getClientCPF/:cpf', getClientCPF)
 routes.post('/postUsuario', postUsuario)
 
 export default routes;

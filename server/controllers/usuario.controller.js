@@ -26,33 +26,6 @@ export function putUsuario(req, res) {
         });
 };
 
-//get client with cpf
-export function getClientCPF(req, res) {
-    let users = new Array();
-    console.log('3')
-    let connection;
-    console.log(req.params.senha);
-    console.log(req.params.cpf);
-    oracledb.getConnection(dbConfig)
-        .then((c) => {
-            console.log('2')
-            connection = c;
-            return connection.execute("select * from usuario where cpf = :cpf", {
-                cpf: req.params.cpf,
-            });
-        })
-        .then((result) => {
-            res.status(200).json(result);
-        }).then((app) => {
-            if (connection) {
-                connection.close();
-            }
-        }).catch((error) => {
-            res.status(500).json({ message: error.message || "Some error occurred!" });
-        });
-
-}
-
 //post user
 
 export function postUsuario(req, res) {

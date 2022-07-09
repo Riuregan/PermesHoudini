@@ -123,3 +123,25 @@ export function putTestes(req, res) {
             res.status(500).json({ message: error.message || "Some error occurred!" });
         });
 };
+
+
+//delete testes
+export function deleteTestes(req, res) {
+    let connection;
+    oracledb.getConnection(dbConfig)
+        .then((c) => {
+            connection = c;
+            return connection.execute("DELETE FROM testes WHERE id_teste = :id_teste",
+                {
+                    id_teste: req.params.id_teste
+                });
+        }).then(() => {
+            res.status(200).json("User successfully deleted!");
+        }).then(() => {
+            if (connection) {
+                connection.close();
+            }
+        }).catch((error) => {
+            res.status(500).json({ message: error.message || "Some error occurred!" });
+        });
+};

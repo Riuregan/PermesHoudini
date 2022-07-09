@@ -16,6 +16,7 @@ export default function Perfil() {
     const isAuthenticatedGerente = useSelector((state) => state.isAuthenticatedGerente);
     const userAtual = useSelector((state) => state.user);
 
+    const dispatch = useDispatch();
 
     const [user, setUser] = useState({
         nome: userAtual.user[1],
@@ -29,22 +30,57 @@ export default function Perfil() {
     const handleClickEdit = (user) => {
         console.log(user.nome)
         console.log(user.senha)
-        console.log(userAtual.user[0])
+        console.log(userAtual)
         if (isAuthenticatedClient.isAuthenticatedClient) {
             axios.put(`http://localhost:3001/putUsuario/${userAtual.user[0]}`, {
                 nome: user.nome,
                 senha: user.senha,
             })
-                .then(function (response) {
+                .then(function () {
                     alert('Usuário alterado com sucesso')
                     setBoolSenha(true);
                     setBoolName(true);
-                    setHelperEffect(true)
+                    dispatch(addUser({
+                        ...userAtual.user,
+                        [[1]]: user.nome,
+                        [[3]]: user.senha,
+
+                    }));
                 })
         }
         else if (isAuthenticatedFunc.isAuthenticatedFunc) {
+            axios.put(`http://localhost:3001/putFuncionarios/${userAtual.user[0]}`, {
+                nome: user.nome,
+                senha: user.senha,
+            })
+                .then(function () {
+                    alert('Usuário alterado com sucesso')
+                    setBoolSenha(true);
+                    setBoolName(true);
+                    dispatch(addUser({
+                        ...userAtual.user,
+                        [[1]]: user.nome,
+                        [[3]]: user.senha,
+
+                    }));
+                })
 
         } else if (isAuthenticatedGerente.isAuthenticatedGerente) {
+            axios.put(`http://localhost:3001/putFuncionarios/${userAtual.user[0]}`, {
+                nome: user.nome,
+                senha: user.senha,
+            })
+                .then(function () {
+                    alert('Usuário alterado com sucesso')
+                    setBoolSenha(true);
+                    setBoolName(true);
+                    dispatch(addUser({
+                        ...userAtual.user,
+                        [[1]]: user.nome,
+                        [[3]]: user.senha,
+
+                    }));
+                })
 
         }
     }

@@ -24,29 +24,25 @@ export function getFuncionarios(req, res) {
 
 };
 
-
-//get func with cpf
-export function getFuncCPF(req, res) {
-    let users = new Array();
-    console.log('3')
+//put usuario
+export function putFuncionarios(req, res) {
     let connection;
-
     oracledb.getConnection(dbConfig)
         .then((c) => {
-            console.log('2')
             connection = c;
-            return connection.execute("select * from funcionarios where cpf = :cpf", {
-                cpf: req.params.cpf,
-            });
-        })
-        .then((result) => {
-            res.status(200).json(result);
-        }).then((app) => {
+            return connection.execute("update funcionarios SET nome = :nome , senha = :senha WHERE cpf = :cpf",
+                {
+                    cpf: req.params.cpf,
+                    nome: req.body.nome,
+                    senha: req.body.senha
+                });
+        }).then((c) => {
+            res.status(200).json(c);
+        }).then(() => {
             if (connection) {
                 connection.close();
             }
         }).catch((error) => {
             res.status(500).json({ message: error.message || "Some error occurred!" });
         });
-
-}
+};
