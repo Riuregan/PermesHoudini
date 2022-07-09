@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -26,16 +26,13 @@ export default function BasicModal({ confirmModal }) {
 
     const [dados, setDados] = useState();
 
-
     const handleChange = (value) => {
-        console.log(dados)
         setDados((prevValues) => ({
             ...prevValues,
             [value.target.name]: value.target.value,
         }));
 
     };
-
 
     return (
         <div>
@@ -51,15 +48,23 @@ export default function BasicModal({ confirmModal }) {
                         <h1 className={styles.titulo}>Novo teste</h1>
                     </Typography>
                     <div className={styles.input}>
-                        <label for="tipo-teste"><h2>Teste:</h2></label>
+                        <label><h2>Teste:</h2></label>
                         <select name="id_tipo_teste" id="teste-select" onChange={handleChange}>
-                            <option value="2">--Selecione uma opção an option--</option>
-                            <option value='1'>Dog</option>{/* Aqui vamos colocar as options quando integrar o back*/}
+                            <option value="0">--Selecione uma opção an option--</option>
+                            <option value='1'>Teste de sangue</option>
+                            <option value='2'>Teste covid</option>
+                            <option value='3'>Fezes</option>
+                            <option value='4'>Urina</option>
+                            <option value='5'>HIV</option>
+                            <option value='6'>Gravidez</option>
+                            <option value='7'>Vitamico</option>
+                            <option value='8'>Colesterol</option>
+                            <option value='9'>DNA</option>
                         </select>
                     </div>
                     <div className={styles.input}>
-                        <label for="data"><h2>Data:</h2></label>
-                        <input max="31/12/9999" onChange={handleChange} name="time_teste"></input>
+                        <label><h2>Data:</h2></label>
+                        <input onChange={handleChange} name="time_teste"></input>
 
                     </div>
                     <button onClick={() => { confirmModal(dados); setOpen(false); }} className={styles.button}>Pedir</button>

@@ -6,6 +6,7 @@ import styles from '../styles/meusTestes.module.css';
 import { useSelector } from "react-redux";
 import ModalEditTest from '../components/modal/ModalEditTest'
 import ModalDelete from '../components/modal/ModalDelete'
+import LoaderSpinner from '../components/LoaderSpinner';
 
 function FuncionarioTestes() {
 
@@ -153,7 +154,12 @@ function FuncionarioTestes() {
                 <h1 className={styles.titulo}>Testes</h1>
                 <ModalDelete open={openDelete} setOpen={setOpenDelete} id={deleteID} confirmModal={(id) => handleClickDelete(id)}></ModalDelete>
                 <ModalEditTest dados={dadosEdit} setDados={setDadosEdit} open={open} setOpen={setOpen} confirmModal={(value) => handleClickEdit(value)}></ModalEditTest>
-                <SortTable InitialPageSize={10} columns={columns} data={dados}></SortTable>
+                <>
+                    {
+                        helperEffect ? <LoaderSpinner></LoaderSpinner> :
+                            <SortTable InitialPageSize={10} columns={columns} data={dados}></SortTable>
+                    }
+                </ >
 
             </div>
 

@@ -20,10 +20,23 @@ export default function Perfil() {
 
     const dispatch = useDispatch();
 
-    const [user, setUser] = useState({
-        nome: userAtual.user[1],
-        senha: userAtual.user[3]
-    });
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        if (isAuthenticatedClient.isAuthenticatedClient) {
+            setUser({
+                nome: userAtual.user[1],
+                senha: userAtual.user[3],
+            });
+        } else {
+            setUser({
+                nome: userAtual.user[1],
+                senha: userAtual.user[4],
+            });
+
+        }
+    }, []);
+
 
     const [boolName, setBoolName] = useState(true);
     const [boolSenha, setBoolSenha] = useState(true);
@@ -59,7 +72,7 @@ export default function Perfil() {
                     dispatch(addUser({
                         ...userAtual.user,
                         [[1]]: user.nome,
-                        [[3]]: user.senha,
+                        [[4]]: user.senha,
 
                     }));
                 })
@@ -76,7 +89,7 @@ export default function Perfil() {
                     dispatch(addUser({
                         ...userAtual.user,
                         [[1]]: user.nome,
-                        [[3]]: user.senha,
+                        [[4]]: user.senha,
 
                     }));
                 })

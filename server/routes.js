@@ -23,8 +23,8 @@ routes.delete('/deleteTestes/:id_teste', deleteTestes);
 //laboratorios
 routes.get('/laboratorio', getLaboratorio);
 routes.post('/postLaboratorio', postLaboratorios);
-routes.put('/putLaboratorio/:gerente_cpf', putLaboratorios) // ajustar
-routes.delete('/deleteLaboratorio/:gerente_cpf', deleteLaboratorio) // ajustar
+routes.put('/putLaboratorio/:gerente_cpf', putLaboratorios)
+routes.delete('/deleteLaboratorio/:gerente_cpf', deleteLaboratorio)
 
 //funcionarios
 routes.get('/funcionarios', getFuncionarios);

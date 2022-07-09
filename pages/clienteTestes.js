@@ -7,6 +7,7 @@ import SortTable from '../components/table.js'
 import BasicModal from '../components/modal/BasicModal.js'
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import LoaderSpinner from '../components/LoaderSpinner';
 
 
 export default function ClienteTestes() {
@@ -50,7 +51,7 @@ export default function ClienteTestes() {
     const columns = React.useMemo(
         () => [
             {
-                Header: 'Nome',
+                Header: 'ID_tipo_teste',
                 accessor: '2',
             },
             {
@@ -129,7 +130,12 @@ export default function ClienteTestes() {
                     }} />
                 </div>
 
-                <SortTable InitialPageSize={10} columns={columns} data={dados}></SortTable>
+                <>
+                    {
+                        helperEffect ? <LoaderSpinner></LoaderSpinner> :
+                            <SortTable InitialPageSize={10} columns={columns} data={dados}></SortTable>
+                    }
+                </ >
 
             </div>
 
