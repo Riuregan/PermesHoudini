@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { loginGerente, loginFunc, loginClient } from './controllers/login.controller.js'
 import { getTestes, getTestesFunc, postTestes, putTestes, deleteTestes } from './controllers/testes.controller.js'
 import { getLaboratorio, postLaboratorios, putLaboratorios, deleteLaboratorio } from './controllers/laboratorio.controller.js'
-import { getFuncionarios, putFuncionarios } from './controllers/funcionarios.controller.js'
+import { getFuncionarios, putFuncionarios, deleteFuncionariosTabela, postFuncionarios } from './controllers/funcionarios.controller.js'
 import { getMateriais, postMateriais, putMateriais, deleteMateriais } from './controllers/materiais.controller.js'
 import { putUsuario, postUsuario } from './controllers/usuario.controller.js'
 
@@ -29,6 +29,8 @@ routes.delete('/deleteLaboratorio/:gerente_cpf', deleteLaboratorio)
 //funcionarios
 routes.get('/funcionarios', getFuncionarios);
 routes.put('/putFuncionarios/:cpf', putFuncionarios);
+routes.delete('/deleteFuncionarios/:cpf', deleteFuncionariosTabela);
+routes.post('/postFuncionarios', postFuncionarios);
 
 
 //materiais

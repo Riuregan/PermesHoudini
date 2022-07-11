@@ -1,0 +1,16 @@
+.text {
+    padding: 20px;
+    text-align: center;
+    color: white;
+
+}
+
+.img {
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 #781e94cc;
+
+}
+
+.linha {
+    margin: 1vw;
+}

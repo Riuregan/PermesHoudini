@@ -154,7 +154,7 @@ function GerenteMateriais() {
                 <h1 className={styles.titulo}>Estoque</h1>
                 <div className={styles.cimaDaTabela}>
                     <ModalDelete open={openDelete} setOpen={setOpenDelete} id={deleteID} confirmModal={(id) => handleClickDelete(id)}></ModalDelete>
-                    <Button className={styles.button} onClick={handleAdd}>Solicitar novo teste</Button>
+                    <Button className={styles.button} onClick={handleAdd}>Adicionar material</Button>
                     <ModalMateriais open={open} setOpen={setOpen} dados={dadosMat} setDados={setDadosMat} type={type} confirmModal={(material) => {
                         type ? handleClickAdd(material) : handleClickEdit(material)
                     }} />

@@ -9,12 +9,12 @@
     align-items: center;
 }
 
-.img{
+.img {
     margin-top: 10vh;
     align-self: flex-start;
 }
 
-.page{
+.page {
     overflow: hidden;
 }
 
@@ -31,6 +31,7 @@
     padding-right: 40px;
     padding-left: 40px;
     border-color: #002400;
+    cursor: pointer;
 }
 
 .button:hover {
@@ -41,6 +42,7 @@
     padding-right: 40px;
     padding-left: 40px;
     border-color: #002400;
+    cursor: pointer;
 
 }
 
@@ -54,7 +56,7 @@
     font-size: 20px;
 }
 
-.input{
+.input {
     margin: 2vh;
 }
 
@@ -69,7 +71,7 @@
     border-color: #DE6449;
 }
 
-.excluir{
+.excluir {
     position: absolute;
     right: -100%;
     bottom: -190%;

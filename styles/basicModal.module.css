@@ -6,6 +6,7 @@
     padding-right: 40px;
     padding-left: 40px;
     border-color: #791E94;
+    cursor:pointer;
 }
 
 .button:hover {
@@ -16,10 +17,16 @@
     padding-right: 40px;
     padding-left: 40px;
     border-color: #791E94;
+    cursor:pointer;
 
 }
 
-
+.conteudo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    
+}
 
 .box {
     display: flex;

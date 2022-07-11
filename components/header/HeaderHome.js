@@ -11,14 +11,8 @@ import MenuIcon from '@mui/icons-material/MedicalServices';
 
 import styles from "../../styles/header.module.css"
 
-import Router from 'next/router'
-
 export default function Header() {
-
-    const handleClickClienteTestes = () => Router.push('/funcionarioTestes');
-    const handleClickPerfil = () => Router.push('/perfil');
-
-
+    <script src="https://kit.fontawesome.com/8a0b54b24f.js" crossorigin="anonymous"></script>
     return (
         <AppBar position="static">
             <Toolbar className={styles.toolbar}>
@@ -40,25 +34,10 @@ export default function Header() {
                 <div className={styles.divTypography}>
                     <Typography className={styles.typography} variant="h6"
                         component="div" >
-                        <div style={{ cursor: 'pointer' }} onClick={handleClickClienteTestes}>Testes</div>
+                        <a href="/login">Login</a>
                     </Typography>
-                    <Typography className={styles.typography} variant="h6"
-                        component="div" >
-                        <div style={{ cursor: 'pointer' }} onClick={handleClickPerfil}>Perfil</div>
-                    </Typography>
-                    {/*<Typography className={styles.typography} onClick={() => console.log("teste")} variant="h6"
-                        component="div" >
-                        Laborátorios}
-                
 
-                    </Typography>*/
-                    }
-
-
-                    
                 </div>
-
-                <Button color="inherit" href="/"  >Logout</Button>
             </Toolbar>
         </AppBar >
     );

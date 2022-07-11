@@ -1,8 +1,10 @@
 .excluirButton {
     color: purple;
+    cursor: pointer;
 }
 
 .editarButton {
     color: purple;
     padding: 30px;
+    cursor: pointer;
 }

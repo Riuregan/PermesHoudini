@@ -80,7 +80,7 @@ function LoginForm() {
         </div>
         <div className={styles.loginDirecao} >
           <div>
-            <p>Não tem conta? <a htmlFor='/cadastro'>Cadastre-se</a></p>
+            <p>Não tem conta? <a className={styles.link} href='/cadastro'>Cadastre-se</a></p>
           </div>
           <button type="button" className={styles.loginButton} placeholder="Login client..." onClick={handleLoginClient}>Logar</button>
         </div>

@@ -1,36 +1,32 @@
 
 import React, { useState } from 'react'
-import LoginForm from '../components/LoginForm';
-import styles from '../styles/Index.module.css';
+import { Provider } from "react-redux";
+import { store } from "../store/store";
+import styles from '../styles/home.module.css';
+import Header from '../components/header/HeaderHome'
+import Image from 'next/image';
 
-export default function Home() {
-    //login teste, precisa linkar com o banco de dados
-    const adminUser = {
-        email: "admin@admin.com",
-        password: "admin123"
-    }
+import Carousel from '../components/carousel/carousel.js';
 
-    const [user, setUser] = useState({ name: "", email: "" })
-    const [erro, setError] = useState("");
 
-    const Login = details => {
-        console.log(details);
-    }
+const img = require("../components/images/imagemHome.jpg");
 
-    const Logout = () => {
-        console.log("Logout");
-    }
+export default function home() {
 
     return (
-        <div className={styles.index}>
-            {(user.email != "") ? (<div className="welcome">
-                <h2>Welcome, <span>{user.name}</span></h2>
-                <button>Logout</button>
-            </div>
-            ) : (
+        <div>
+            <div className={styles.home}>
 
-                <LoginForm />
-            )}
+                <Header />
+                <Image className={styles.imgHome} src={img}></Image>
+                <div class={styles.text}>Permes Houdini</div>
+                <div class={styles.text2}>Medicina, saúde e bem-estar</div>
+                <form action="/login" >
+                    <button className={styles.button}>Login</button>
+                </form>
+
+                <Carousel />
+            </div>
         </div>
     )
 

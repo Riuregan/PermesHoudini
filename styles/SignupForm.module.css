@@ -12,6 +12,18 @@
 
 }
 
+.teste{
+    margin: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.teste button{
+    margin-top:2vh;
+}
+
 .formGroup {
     display: flex;
     flex-direction: row;
@@ -37,11 +49,13 @@
 }
 
 .signupButton {
+    border-color: #791e94;
     background-color: #791e94;
     color: white;
     width: 4vw;
     height: 4vh;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .signupButtonDirection {

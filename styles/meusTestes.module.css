@@ -24,6 +24,7 @@
     border-radius: 10px;
     padding: 5px;
     border-color: #791E94;
+    cursor:pointer;
 }
 
 .button {
@@ -35,6 +36,7 @@
     padding-left: 40px;
     margin: 10px;
     border-color: #791E94;
+    cursor:pointer;
 
 }
 

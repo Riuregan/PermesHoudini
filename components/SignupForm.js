@@ -37,13 +37,13 @@ function LoginForm() {
             <div className={styles.signupForm}>
                 <h2>Faça o cadastro</h2>
                 {/*ERRO */}
-                <div>
+                <div className={styles.teste}>
                     <div className={styles.formGroup}>
                         <label htmlFor="email">Email:</label>
                         <input onChange={handleChange} type="email" name="email" id="email" />
                     </div>
                     <div className={styles.formGroup}>
-                        <label htmlFor="name">Nome completo:</label>
+                        <label htmlFor="name">Nome:</label>
                         <input onChange={handleChange} type="name" name="nome" id="nome" />
                     </div >
                     <div className={styles.formGroup}>

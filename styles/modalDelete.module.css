@@ -16,6 +16,7 @@
     padding-left: 40px;
     margin: 10px;
     border-color: #791E94;
+    cursor:pointer;
 }
 
 .buttons:hover {
@@ -27,5 +28,10 @@
     padding-left: 40px;
     margin: 10px;
     border-color: #791E94;
+    cursor:pointer;
 
+}
+
+.titulo{
+    text-align: center;
 }

@@ -9,3 +9,10 @@
   justify-content: center;
   color: #f7fff7;
 }
+
+.button{
+  background-color: #791e94;
+  color: #f7fff7;
+  margin-left: 3vw;
+  border-radius: 10px;
+}
