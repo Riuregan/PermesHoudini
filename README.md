@@ -10,7 +10,8 @@ E insira o seguinte Wallet no local pedido:
 
 [Wallet_BDENGCOMP.zip](https://github.com/Riuregan/PermesHoudini/files/9088621/Wallet_BDENGCOMP.zip)
 
-Após ter inserido o caminho da pasta criada na seguinte função como mostra o tutorial -> oracledb.initOracleClient({}),
+Após ter inserido o caminho da pasta criada na seguinte função como mostra o tutorial -> oracledb.initOracleClient({})
+
 inicie o backend:
 cd server
 node index.js
