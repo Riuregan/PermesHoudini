@@ -20,7 +20,7 @@ node index.js
 
 e também o frontend:
 
-npm run dev
+na pasta raiz , npm run dev
 
 abra [http://localhost:3000](http://localhost:3000) para iniciar a aplicação
 
