@@ -13,10 +13,13 @@ E insira o seguinte Wallet no local pedido:
 Após ter inserido o caminho da pasta criada na seguinte função como mostra o tutorial -> oracledb.initOracleClient({})
 
 inicie o backend:
+
 cd server
+
 node index.js
 
 e também o frontend:
+
 npm run dev
 
 abra [http://localhost:3000](http://localhost:3000) para iniciar a aplicação
