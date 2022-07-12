@@ -2,13 +2,14 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+Para rodar este projeto, siga o seguinte tutorial :
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+https://www.oracle.com/database/technologies/appdev/quickstartnodejs.html
+
+Utilize o seguinte Wallet:
+
+```[Wallet_BDENGCOMP.zip](https://github.com/Riuregan/PermesHoudini/files/9088621/Wallet_BDENGCOMP.zip)
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
